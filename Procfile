@@ -1,1 +1,1 @@
-web: java -war target/IDCardSystem.war
+web: java target/IDCardSystem.war
