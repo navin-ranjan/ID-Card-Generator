@@ -1,0 +1,246 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jan 31, 2021, 3:38:08 PM
+    Author     : Navin Ranjan
+*/
+
+                                                    /* Home page start*/
+/* top start*/
+.manit-cl{
+    color: #273650;
+    text-transform: uppercase;
+ }
+ .manit-cl h3{
+        font-size: 20px;
+        font-weight: 700;
+        padding-top:10px;
+        
+ }
+ .manit-cl h5{
+     font-size: 16px;
+        font-weight: 700;
+        padding-top:10px;
+        
+ }
+ /* top End*/
+ /* navbar start*/
+.navbar{
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: .9rem;
+    letter-spacing: .1rem;
+    background-color:#273650;
+}
+.navbar-nav li{
+    padding-right: .7rem;
+}
+
+
+.nav-cl{
+    color: azure;
+    
+}
+/* navbar End*/
+
+
+/*image section start*/
+.hero-image{
+    position: relative;
+    height: 500px;
+    overflow: hidden;
+    background-image: url(image/manit.jpg) ;
+    background-size: cover;
+}
+.context-area{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+.context-area h1{
+    font-size: 50px;
+    color:white;
+    text-shadow:0 0 10px black;
+    letter-spacing: 0.2em;
+}
+.des{
+    margin: 20px;
+    display: block;
+    font-size: 18px;
+    color: beige;
+    text-shadow:0 0 10px black;
+}
+.btn{
+    color: white;
+    padding: 10px 20px;
+    font-size: 20px;
+    text-decoration: none;
+    background: red;
+    border-radius: 8px;
+    transform: 0.35 all;
+    
+}
+.btn:hover{
+    opacity: 0.8;
+}
+/* image section  End*/
+
+
+/* tag start*/
+.tag-line {
+    background: #E9E9E9;
+    color: #000;
+    height:20px;
+}
+
+ /*tag bhopal End*/ 
+ 
+ 
+ 
+/* about start*/
+        
+.about{
+    height: 110px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color:grey;
+  }
+  .about h4{
+      margin-left: 25px;
+      text-decoration-line:underline;
+      text-decoration-color:green;
+      text-decoration-style:solid;
+      text-underline-offset:4px;
+      font-size: 20px;
+      font-weight: 700;
+      padding-top:10px;
+      color: #273650;
+  }
+  .about h6{
+      margin: 0 auto;
+  }
+  
+  /* abount End*/
+  
+  
+                                                       
+
+.form-control{
+   color: aliceblue;
+}
+.idea{
+    
+    height:140px;
+    background-color:#273650;
+    background: #E9E9E9;
+    color: #000;
+    
+}
+.idea-right{
+    margin-left:20px;
+    margin-right:20px;
+}
+.idea h4{
+    
+        
+        margin-bottom: 20px;
+      text-decoration-line:underline;
+      text-decoration-color:green;
+      text-decoration-style:solid;
+      text-underline-offset:4px;
+      text-transform: uppercase;
+      font-size: 18px;
+      font-weight: 700;
+      padding-top:15px;
+      color: #273650;
+    
+}
+.footer-end{
+    background-color:#273650;
+    
+}
+.footer-end p{
+    color: white;
+}
+                                         /* Home page End*/
+                                         
+                                         
+                                         
+                                          /* contact us, Registration,log in page start*/
+
+ .contact-form{
+     margin-top: 20px;
+     margin-bottom: 20px;
+    background-color:whitesmoke;
+  
+                                              
+    }
+    .contact-des {
+        
+        margin-bottom:0.2px;
+        
+    }
+    .contact-des h4{
+         
+      margin-top: 20px;
+      margin-left: 20px;
+      text-decoration-line:underline;
+      text-decoration-color:green;
+      text-decoration-style:solid;
+      text-underline-offset:4px;
+      text-transform: uppercase;
+      font-size: 18px;
+      font-weight: 700;
+        color: #273650;
+    }
+    .contact-des button{
+        margin-top: 13px;
+        margin-right: 20px
+    }
+    .contact-area1{
+        margin-top: 20px;
+        
+        
+        
+    }
+    .contact-area2{
+       margin-top: 10px;
+       margin-left: 10px;
+        margin-bottom:30px;
+    }
+    
+    
+    
+    
+
+    .profile{
+        margin-left: 24px;
+        margin-right: 18px;
+    }  
+        
+     
+    .profile h4{
+       
+        text-decoration-line:underline;
+      text-decoration-color:green;
+      text-decoration-style:solid;
+      text-underline-offset:4px;
+      text-transform: uppercase;
+      font-size: 16px;
+      font-weight: 600;
+      
+      color: #273650;
+        
+    }    
+                                             /* contact us, registration, login  page End*/
+                                             
+                                                                                 
+                                             
+
