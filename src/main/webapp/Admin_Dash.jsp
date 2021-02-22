@@ -59,7 +59,7 @@
                 <div class="ml-auto" style="float: right">
                     <button class="btn btn-primary" type="submit">Ideas View</button>
                     <button class="btn btn-primary" type="submit">Contact View</button>
-                    <button class="btn btn-danger" type="submit">Log out</button>
+                    <a  href="admin.jsp" class="btn btn-danger" type="submit">Log out</a>
                 </div> 
             </div>
                 <hr>

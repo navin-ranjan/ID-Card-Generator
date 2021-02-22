@@ -56,38 +56,75 @@
         </nav>
         
         
-        <div class="container contact-form ">
-            
-            <div class="contact-des row " >
-                <h4>Registration</h4>
+        
+        <div class="container py-5">
+  <div class="row justify-content-center align-items-center ">
+
+    <div class="col-md-7 contact-form ">
+             
+        <div class="col-md-12">
+            <div class="contact-des" >
+                <h4>Student Registration </h4>
                 
             </div>
                 <hr>
-             <div class="row contact-area1">   
-             <div class="profile col-md-6" >
-                    <div class="card">
-                        
-                        <div class="card-body">
-                            <h4 style="margin-left: 20px">Instractions</h4>
-                                 <ul style="margin-right: 20px; color: red">
-                                     <li>Fill the correct Information and click on Register button.</li>
-                                     
-                                </ul>
-                                 
-                        </div>
-                    </div>
-            </div>
+                
+             
                  
-                 <div class="col-md-5 contact-area2">
+                 <div class=" contact-area2">
                 
                     
                      
-                    <form  class="container" action="RegS" method="get">
+                     <form  action="RegS" method="POST" enctype="multipart/form-data">
       
-                        <div class="form-group"> 
-                            <label >Name </label>
-                             <input type="name" class="form-control" name="txtname" placeholder="Your name">
+                       <div class="form-group">
+                            <label >Roll No./ Scholar No.</label>
+                            <input type="text" class="form-control" name="txtscholar" placeholder="Roll Number">
                         </div>
+
+                        <div class="form-group">
+                            <label >Name</label>
+                            <input type="text" class="form-control" name="txtname" placeholder="Enter the Full Name">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label >Father's Name</label>
+                            <input type="text" class="form-control" name="txtfname" placeholder="Enter the Father's Name">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="sel1">Course</label>
+                            <select class="form-control" id="sel1" name="course" >
+                              <option>None</option>
+                              <option>BTECH</option>
+                              <option>MCA</option>
+                              <option>MBA</option>
+                            </select>
+                          </div>
+                          <div class="form-group">
+                            <label >Session</label>
+                            <input type="" class="form-control" name="txtsession" placeholder="Example : 2018-2021">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="example-date-input">Date of Birth</label>
+                            <input class="form-control" type="date" name="txtdob" id="example-date-input">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label >Mobile No.</label>
+                            <input type="" class="form-control" name="txtmobile" placeholder="Example : 7979819668">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="formFile" class="form-label">Profile picture</label>
+                            <input class="form-control" type="file" name="pic" id="formFile">
+                          </div>
+                        <div class="form-group">
+                            <label >Address</label>
+                            <input type="addres" class="form-control" name="txtaddress" placeholder="Enter your Address ">
+                        </div>
+
                         <div class="form-group">
                             <label >Email address</label>
                             <input type="email" class="form-control" name="txtemail" placeholder="name@example.com">
@@ -95,17 +132,19 @@
 
                         <div class="form-group">
                             <label >New Password</label>
-                            <input type="password" class="form-control" name="txtpass" placeholder="password">
+                            <input type="password" class="form-control" name="txtpass" placeholder="new password">
                         </div>
                         <div class="form-group">
-                            <label >Confirm Password</label>
+                            <label >confirm Password</label>
                             <input type="password" class="form-control" name="txtcpass" placeholder="confirm password">
                         </div>
                         <div class="form-group">
-                            <label >Mobile Number</label>
-                            <input type="phone" class="form-control"  name="txtmobile" placeholder="Your Number">
-                        </div>
-                        <input type="submit" class="btn btn-success" value="Register">
+                                <label for="remember-me" class="text-info"><span>Remember me</span> <span><input id="remember-me" name="remember-me" type="checkbox"></span></label><br>
+                                
+                                <button type="register" class="btn btn-success">Register</button>
+                                <a href="login.jsp" class="btn btn-primary">Log in</a>
+                         </div>
+                        
                     </form>
                     <div>
                        
@@ -116,6 +155,11 @@
                 
              </div>  
             </div>
+  </div>
+  
+</div>
+        
+        
         
         
         

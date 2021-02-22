@@ -18,6 +18,10 @@
         
     </head>
     <body>
+        
+        
+        
+        
         <div class="container top p-3 ">
             <div class="row ">
             <img src="image/manit logo.png"class="img-thumbnail" alt="Cinque Terre" width="110px" height="110px" >
@@ -47,8 +51,8 @@
                     <li class="nav-item ">
                         <a class="nav-link  " href="contactus.jsp">Contact Us</a>
                     </li>
-                    <li class="nav-item active">
-                        <a class="nav-link btn py-1 btn-primary" href="admin.jsp">Admin</a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="admin.jsp">Admin</a>
                     </li>
                 </ul>
                 </div>
@@ -93,7 +97,7 @@
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" placeholder="text">
                             <div class="input-group-append">
-                                <button class="btn btn-danger" type="submit">send</button>
+                                <button class="btn btn-success" type="submit">send</button>
                             </div>
                     </div>
                 </div>

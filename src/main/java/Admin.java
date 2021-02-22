@@ -9,6 +9,7 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -20,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author Navin Ranjan
  */
 public class Admin extends HttpServlet {
-
+    PrintWriter out;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -33,7 +34,8 @@ public class Admin extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
+        out = response.getWriter();
+        try {
            String uname=request.getParameter("txtuser");
             String pass=request.getParameter("txtpass");
             
@@ -48,14 +50,16 @@ public class Admin extends HttpServlet {
             }
             else
             {
+                
                 response.sendRedirect("admin.jsp");
+                out.println("ab kya hua bhai");
             }
             
         }
-        catch(Exception ex) 
+        catch(IOException | ClassNotFoundException | SQLException e) 
         {
             
-        
+            out.println(e);
         }
     }
 

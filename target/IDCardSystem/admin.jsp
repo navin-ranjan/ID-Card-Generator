@@ -55,32 +55,26 @@
             </div>    
         </nav>
         
-        <div class="container contact-form ">
-            
-            <div class="contact-des row " >
+        
+         <div class="container py-5">
+  <div class="row justify-content-center align-items-center ">
+
+    <div class="col-md-6 contact-form ">
+             
+        <div class="col-md-12">
+            <div class="contact-des" >
                 <h4>Admin Log in </h4>
                 
             </div>
                 <hr>
-             <div class="row contact-area1">   
-             <div class="profile col-md-6" >
-                    <div class="card">
-                        
-                        <div class="card-body">
-                            <h4 style="margin-left: 20px">Instractions</h4>
-                                 <ul style="margin-right: 20px; color: red">
-                                     <li>Only Admin Person Log in which Authorized by Institute. </li>
-                                     
-                                </ul>                                
-                        </div>
-                    </div>
-            </div>
+                
+             
                  
-                 <div class="col-md-5 contact-area2">
+                 <div class=" contact-area2">
                 
                     
                      
-                    <form  class="container" action="Admin" method="POST">
+                    <form  action="Admin" method="POST">
       
                        
                         <div class="form-group">
@@ -92,8 +86,10 @@
                             <label >Password</label>
                             <input type="password" class="form-control" name="txtpass" placeholder="password">
                         </div>
-                        
-                        <button type="login" class="btn btn-success">Log in</button>
+                        <div class="form-group">
+                                <button type="login" class="btn btn-success">Log in</button>
+                                
+                         </div>
                         
                     </form>
                     <div>
@@ -105,6 +101,11 @@
                 
              </div>  
             </div>
+  </div>
+  
+</div>
+        
+      
         
         
         

@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author Navin Ranjan
  */
 public class LoginSer extends HttpServlet {
+    PrintWriter out;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,16 +34,18 @@ public class LoginSer extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
+        out = response.getWriter();
+        try {
             /* TODO output your page here. You may use following sample code. */
            
-            String email=request.getParameter("txtemail");
+            String scholar=request.getParameter("txtscholar");
             String pass=request.getParameter("txtpass");
             
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/idcard","root","");
+            out.println("connection nahi bana");
             Statement st =con.createStatement();
-            ResultSet x= st.executeQuery("select * from `stureg` where email='"+email+"' and pass='"+pass+"'");
+            ResultSet x= st.executeQuery("select * from `regstu` where scholar='"+scholar+"' and pass='"+pass+"'");
             if(x.next())
             {
                 
@@ -54,9 +57,9 @@ public class LoginSer extends HttpServlet {
             }
             
         }
-        catch(Exception ex) 
+        catch(Exception e) 
         {
-            
+            out.println(e);
         
         }
     }

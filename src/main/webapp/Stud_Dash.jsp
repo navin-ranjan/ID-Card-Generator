@@ -56,12 +56,12 @@
                   <h4>Student Dashboard </h4>
                 </div>
                 <div class="ml-auto" style="float: right">
-                  <button class="btn btn-danger" type="submit">Log out</button>
+                  <a href="login.jsp" class="btn btn-danger" type="submit">Log out</a>
                 </div> 
             </div>
                 <hr>
              <div class="row contact-area1">   
-             <div class="profile col-md-6" >
+             <div class="profile col-md-6 py-3" >
                     <div class="card">
                         
                         <div class="card-body">
@@ -79,31 +79,9 @@
                 
                     
                      
-                    <form  class="container " action="RegS" method="get">
-      
-                        <div class="form-group"> 
-                            <label >Name </label>
-                             <input type="name" class="form-control" name="txtname" placeholder="Your name">
-                        </div>
-                        <div class="form-group">
-                            <label >Email address</label>
-                            <input type="email" class="form-control" name="txtemail" placeholder="name@example.com">
-                        </div>
-
-                        <div class="form-group">
-                            <label >New Password</label>
-                            <input type="password" class="form-control" name="txtpass" placeholder="password">
-                        </div>
-                        <div class="form-group">
-                            <label >Confirm Password</label>
-                            <input type="password" class="form-control" name="txtcpass" placeholder="confirm password">
-                        </div>
-                        <div class="form-group">
-                            <label >Mobile Number</label>
-                            <input type="phone" class="form-control"  name="txtmobile" placeholder="Your Number">
-                        </div>
+                   
                         <input type="submit" class="btn btn-success" value="Generate ID Card">
-                    </form>
+                   
                     <div>
                        
                     </div>   

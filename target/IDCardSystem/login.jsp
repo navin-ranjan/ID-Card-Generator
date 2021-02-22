@@ -18,9 +18,6 @@
         
     </head>
     <body>
-        
-        
-        <h6>a modified hoga ki nahi battao</h6>
         <div class="container top p-3 ">
             <div class="row ">
             <img src="image/manit logo.png"class="img-thumbnail" alt="Cinque Terre" width="110px" height="110px" >
@@ -58,47 +55,41 @@
             </div>    
         </nav>
         
-        
-        <div class="container contact-form ">
-            
-            <div class="contact-des row " >
+        <div class="container py-5">
+  <div class="row justify-content-center align-items-center ">
+
+    <div class="col-md-6 contact-form ">
+             
+        <div class="col-md-12">
+            <div class="contact-des" >
                 <h4>Student Log in </h4>
                 
             </div>
                 <hr>
-             <div class="row contact-area1">   
-             <div class="profile col-md-6" >
-                    <div class="card">
-                        
-                        <div class="card-body">
-                            <h4 style="margin-left: 20px">Instractions</h4>
-                                 <ul style="margin-right: 20px; color: red">
-                                     <li>New candidates, who have not registered are required to click on New Registration link and fill in the Sign Up details.</li>
-                                     
-                                </ul>                                 
-                        </div>
-                    </div>
-            </div>
+                
+             
                  
-                 <div class="col-md-5 contact-area2">
+                 <div class=" contact-area2">
                 
                     
                      
-                    <form  class="container" action="LoginSer" method="POST">
+                    <form  action="LoginSer" method="POST">
       
                        
                         <div class="form-group">
-                            <label >Email address</label>
-                            <input type="email" class="form-control" name="txtemail" placeholder="name@example.com">
+                            <label >Scholar No./Roll No.</label>
+                            <input type="txt" class="form-control" name="txtscholar" placeholder="Enter your Roll No">
                         </div>
 
                         <div class="form-group">
                             <label >Password</label>
                             <input type="password" class="form-control" name="txtpass" placeholder="password">
                         </div>
+                        <div class="form-group">
+                                <button type="login" class="btn btn-success">Log in</button>
+                                <a href="register.jsp" type="New Registration" class="btn btn-primary">New Registation</a>
+                         </div>
                         
-                        <button type="login" class="btn btn-success">Log in</button>
-                        <a href="register.jsp" type="New Registration" class="btn btn-primary">New Registation</a>
                     </form>
                     <div>
                        
@@ -109,6 +100,12 @@
                 
              </div>  
             </div>
+  </div>
+  
+</div>
+        
+        
+        
         
        
         
