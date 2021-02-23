@@ -43,13 +43,12 @@ public class LoginSer extends HttpServlet {
             
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/idcard","root","");
-            out.println("connection nahi bana");
             Statement st =con.createStatement();
             ResultSet x= st.executeQuery("select * from `regstu` where scholar='"+scholar+"' and pass='"+pass+"'");
             if(x.next())
             {
                 
-                response.sendRedirect("Stud_Dash.jsp");
+                response.sendRedirect("Stud_Dash.jsp?scholar="+scholar);
             }
             else
             {

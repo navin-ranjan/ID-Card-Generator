@@ -1,4 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.sql.*" %>
+<%@page import="javax.servlet.*" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -7,6 +9,7 @@
         
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet"  href="style.css">
+        <link rel="stylesheet"  href="profile.css">
          <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         
@@ -60,36 +63,71 @@
                 </div> 
             </div>
                 <hr>
-             <div class="row contact-area1">   
-             <div class="profile col-md-6 py-3" >
-                    <div class="card">
-                        
-                        <div class="card-body">
-                            <h4 style="margin-left: 20px">Instractions</h4>
-                                 <ul style="margin-right: 20px; color: red">
-                                     <li>Fill the correct Information and click on Generate ID Card button.</li>
-                                     
-                                </ul>
-                                 
-                        </div>
-                    </div>
+                <div class="container">
+<div class="py-5">
+      <div class="col-sm-7">
+        
+        <!-- User profile -->
+        <div class="panel panel-default">
+          
+          <div class="panel-body">
+            <div class="profile__avatar">
+              <img src="image/2.jpg" alt="...">
             </div>
-                 
-                 <div class="col-md-5 contact-area2">
+            <div class="profile__header">
                 
+                <%
+    
                     
-                     
+                   Connection con;
+                   PreparedStatement ps;
+                   ResultSet x;
+                   Class.forName("com.mysql.jdbc.Driver");
+                   con= DriverManager.getConnection("jdbc:mysql://localhost:3306/idcard","root","");
                    
-                        <input type="submit" class="btn btn-success" value="Generate ID Card">
+                   String scholar=request.getParameter("scholar");
+                   ps=con.prepareStatement("select * from regstu where scholar = ?");
+                   ps.setString(1, scholar);
+                   x=ps.executeQuery();
                    
-                    <div>
-                       
-                    </div>   
-                    
-                </div>
-                
-                
-             </div>  
+                   while(x.next())
+                   {
+                        
+%>
+              
+              <h6 class="text-success">Sch. No./Roll No.: <%=x.getString("scholar")%></h6>
+              <hr>
+              <h6>Name : <%=x.getString("name")%> </h6>
+              <hr>
+              <h6>Father's Name : <%=x.getString("fname")%> </h6>
+              <hr>
+              <h6>Course: <%=x.getString("course")%> </h6>
+              <hr>
+              <h6>Session : <%=x.getString("Session")%> </h6>
+              <hr>
+              <h6>DOB : <%=x.getString("dob")%> </h6>
+              <hr>
+              <h6>Mobile No. : <%=x.getString("mobile")%></h6>
+              <hr>
+              <h6>Address: <%=x.getString("address")%> </h6>
+              <hr>
+              <h6>Email : <%=x.getString("email")%> </h6>
+              <hr>
+              
+              
+              <% 
+                  }
+              %>
+              
+                  
+              <button class="btn bg-info">ID Card Download</button>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+</div>
+             </div>
             </div>
             
         

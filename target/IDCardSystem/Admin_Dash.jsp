@@ -1,4 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.sql.*" %>
+<%@page import="javax.servlet.*" %>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -50,66 +53,86 @@
         </nav>
         
         
-        <div class="container contact-form ">
+        <div class="container-fluid contact-form ">
             
             <div class="contact-des row " >
                 <div >
                   <h4>Admin Dashboard </h4>
                 </div>
-                <div class="ml-auto" style="float: right">
+                <div class="ml-auto" style="float: right; margin-right: 15px">
                     <button class="btn btn-primary" type="submit">Ideas View</button>
                     <button class="btn btn-primary" type="submit">Contact View</button>
                     <a  href="admin.jsp" class="btn btn-danger" type="submit">Log out</a>
                 </div> 
             </div>
                 <hr>
-             <div class="row contact-area1">   
-             <div class="profile col-md-6" >
-                    <div class="card">
-                        
-                        <div class="card-body">
-                            <h4 style="margin-left: 20px">Instractions</h4>
-                                 <ul style="margin-right: 20px; color: red">
-                                     <li>Fill the correct Information and click on Generate ID Card button.</li>
-                                     
-                                </ul>
-                                 
-                        </div>
-                    </div>
-            </div>
-                 
-                 <div class="col-md-5 contact-area2">
                 
+                <h5 class="text-center text-success">STUDENT DETAILS</h5>
+                <hr>
+                
+                
+	<div class="row">
+		<div class=" col-md-12">
+            <table class="table ">
+                  <thead>
+                   <tr class=" bg-info text-white">
+                      <th>Sch./Roll No.</th>
+                      <th>Name</th>
+                      <th>Father's Name</th>
+                      <th>Course</th>  
+                      <th>Session</th>
+                      <th>DOB</th>
+                      <th>Mobile</th> 
+                      <th>Email</th>
+                      <th>password</th> 
+                      <th>Action</th> 
+                  </tr>
+              </thead>   
+              <tbody>
+                  <%
+                        Connection con;
+                        PreparedStatement ps;
+                        ResultSet x;
+                        Class.forName("com.mysql.jdbc.Driver");
+                        con= DriverManager.getConnection("jdbc:mysql://localhost:3306/idcard","root","");
+                        
+                        String query="select * from regstu";
+                        Statement st=con.createStatement();
+                        
+                        x=st.executeQuery(query);
+                        
+                    while(x.next())
+                    {
+                         String scholar= x.getString("scholar");
                     
-                     
-                    <form  class="container " action="RegS" method="get">
-      
-                        <div class="form-group"> 
-                            <label >Name </label>
-                             <input type="name" class="form-control" name="txtname" placeholder="Your name">
-                        </div>
-                        <div class="form-group">
-                            <label >Email address</label>
-                            <input type="email" class="form-control" name="txtemail" placeholder="name@example.com">
-                        </div>
-
-                        <div class="form-group">
-                            <label >New Password</label>
-                            <input type="password" class="form-control" name="txtpass" placeholder="password">
-                        </div>
-                        <div class="form-group">
-                            <label >Confirm Password</label>
-                            <input type="password" class="form-control" name="txtcpass" placeholder="confirm password">
-                        </div>
-                        <div class="form-group">
-                            <label >Mobile Number</label>
-                            <input type="phone" class="form-control"  name="txtmobile" placeholder="Your Number">
-                        </div>
-                        <input type="submit" class="btn btn-success" value="Generate ID Card">
-                    </form>
-                    <div>
-                       
-                    </div>   
+                   %>
+                  
+                  
+                <tr>
+                    <td><%=x.getString("scholar")%></td>
+                    <td><%=x.getString("name")%></td>
+                    <td><%=x.getString("fname")%></td>
+                    <td><%=x.getString("course")%></td>
+                    <td><%=x.getString("session")%></td>
+                    <td><%=x.getString("dob")%></td>
+                    <td><%=x.getString("mobile")%></td>
+                    <td><%=x.getString("email")%></td>
+                    <td><%=x.getString("pass")%></td>
+                    <td><a href="delete.jsp?scholar=<%=scholar%>" class="btn btn-danger">Delete</a></td>
+                </tr>
+                <%
+                    }
+                    
+                    %>
+                                              
+              </tbody>
+            </table>
+            </div>
+	</div>
+</div>
+             
+                 
+                  
                     
                 </div>
                 
