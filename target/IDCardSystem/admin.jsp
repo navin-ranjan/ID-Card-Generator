@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>ID CARD</title>
+        <title>Admin</title>
         
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet"  href="style.css">
@@ -42,7 +42,7 @@
                         <a class="nav-link " href="index.jsp">Home</a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link " href="login.jsp">ID Card</a>
+                        <a class="nav-link " href="register.jsp">ID Card</a>
                     </li>
                     <li class="nav-item ">
                         <a class="nav-link  " href="contactus.jsp">Contact Us</a>
@@ -74,7 +74,7 @@
                 
                     
                      
-                    <form  action="Admin" method="POST">
+                    <form  action="AdminLog" method="POST">
       
                        
                         <div class="form-group">
@@ -111,22 +111,7 @@
         
         
         
-        <div class="idea">
-            <div class="container">
-                <div class="idea-right" ">
-                    <hr>
-                    <h4>ideas share </h4>
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="text">
-                            <div class="input-group-append">
-                             <button class="btn btn-success" type="submit">send</button>
-                            </div>
-                    </div>
-                </div>
-                
-            </div>
-            
-        </div>
+        
         
         <footer  class="py-3 footer-end ">
             <div class="container text-center">

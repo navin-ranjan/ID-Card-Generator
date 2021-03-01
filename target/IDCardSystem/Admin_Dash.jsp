@@ -6,7 +6,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Home</title>
+        <title>Admin</title>
         
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet"  href="style.css">
@@ -33,13 +33,13 @@
                     <span class="navbar-toggler-icon "></span>
                     
                 </button>
-                <div class="collapse navbar-collapse " id="mymenu">
+                <div class="collapse navbar-collapse text-center" id="mymenu">
                 <ul class=" navbar-nav ml-auto" >
                     <li class="nav-item active ">
                         <a class="nav-link " href="index.jsp">Home</a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link " href="login.jsp">ID Card</a>
+                        <a class="nav-link " href="register.jsp">ID Card</a>
                     </li>
                     <li class="nav-item ">
                         <a class="nav-link  " href="contactus.jsp">Contact Us</a>
@@ -60,7 +60,7 @@
                   <h4>Admin Dashboard </h4>
                 </div>
                 <div class="ml-auto" style="float: right; margin-right: 15px">
-                    <button class="btn btn-primary" type="submit">Ideas View</button>
+                    
                     <button class="btn btn-primary" type="submit">Contact View</button>
                     <a  href="admin.jsp" class="btn btn-danger" type="submit">Log out</a>
                 </div> 
@@ -71,9 +71,9 @@
                 <hr>
                 
                 
-	<div class="row">
+	<div class="row ">
 		<div class=" col-md-12">
-            <table class="table ">
+            <table class="table border">
                   <thead>
                    <tr class=" bg-info text-white">
                       <th>Sch./Roll No.</th>
@@ -83,9 +83,11 @@
                       <th>Session</th>
                       <th>DOB</th>
                       <th>Mobile</th> 
+                      <th>Gender</th>
+                      <th>Address</th> 
                       <th>Email</th>
-                      <th>password</th> 
-                      <th>Action</th> 
+                      <th>Action</th>
+                      
                   </tr>
               </thead>   
               <tbody>
@@ -94,7 +96,7 @@
                         PreparedStatement ps;
                         ResultSet x;
                         Class.forName("com.mysql.jdbc.Driver");
-                        con= DriverManager.getConnection("jdbc:mysql://localhost:3306/idcard","root","");
+                        con= DriverManager.getConnection("jdbc:mysql://aws-idcard.caecyauotwqb.us-east-2.rds.amazonaws.com:3306/idcard?useSSL=false&allowPublicKeyRetrieval=true","admin","Navin15498");
                         
                         String query="select * from regstu";
                         Statement st=con.createStatement();
@@ -116,8 +118,9 @@
                     <td><%=x.getString("session")%></td>
                     <td><%=x.getString("dob")%></td>
                     <td><%=x.getString("mobile")%></td>
+                    <td><%=x.getString("gender")%></td>
+                    <td><%=x.getString("address")%></td>
                     <td><%=x.getString("email")%></td>
-                    <td><%=x.getString("pass")%></td>
                     <td><a href="delete.jsp?scholar=<%=scholar%>" class="btn btn-danger">Delete</a></td>
                 </tr>
                 <%

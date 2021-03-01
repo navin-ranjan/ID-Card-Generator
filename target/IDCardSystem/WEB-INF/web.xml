@@ -17,6 +17,18 @@
         <servlet-name>RegS</servlet-name>
         <servlet-class>RegS</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RegSS</servlet-name>
+        <servlet-class>RegS</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Idcard</servlet-name>
+        <servlet-class>Idcard</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminLog</servlet-name>
+        <servlet-class>AdminLog</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>java</servlet-name>
         <url-pattern>/java</url-pattern>
@@ -32,6 +44,18 @@
     <servlet-mapping>
         <servlet-name>RegS</servlet-name>
         <url-pattern>/RegS</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RegSS</servlet-name>
+        <url-pattern>/RegSS</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Idcard</servlet-name>
+        <url-pattern>/Idcard</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminLog</servlet-name>
+        <url-pattern>/AdminLog</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>

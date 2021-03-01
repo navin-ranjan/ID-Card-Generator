@@ -42,7 +42,7 @@
                         <a class="nav-link " href="index.jsp">Home</a>
                     </li>
                     <li class="nav-item  ">
-                        <a class="nav-link " href="login.jsp">ID Card</a>
+                        <a class="nav-link " href="register.jsp">ID Card</a>
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link  " href="contactus.jsp">Contact Us</a>
@@ -55,15 +55,18 @@
             </div>    
         </nav>
         
+        
+        
+        
         <div class="container contact-form ">
             
-            <div class="contact-des row " >
-                <h4> contact us</h4>
+            <div class="contact-des row  " >
+                <h4 > contact us</h4>
                 
             </div>
                 <hr>
-             <div class="row contact-area1">   
-             <div class="profile col-md-6" >
+             <div class="row contact-area1 ">   
+             <div class="profile col-md-5 p-5" >
                     <div class="card">
                         
                         <div class="card-body">
@@ -77,7 +80,7 @@
                     </div>
             </div>
                  
-                 <div class="col-md-5 contact-area2">
+                 <div class="col-md-6 contact-area2">
                 
                     
                      
@@ -121,22 +124,9 @@
         
         
         
-        <div class="idea">
-            <div class="container">
-                <div class="idea-right" ">
-                    <hr>
-                    <h4>ideas share </h4>
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="text">
-                            <div class="input-group-append">
-                             <button class="btn btn-success" type="submit">send</button>
-                            </div>
-                    </div>
-                </div>
-                
-            </div>
+       
             
-        </div>
+        
         
         <footer  class="py-3 footer-end ">
             <div class="container text-center">

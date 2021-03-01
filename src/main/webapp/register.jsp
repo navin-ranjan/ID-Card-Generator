@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Registration</title>
+        <title>ID CARD</title>
         
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet"  href="style.css">
@@ -42,7 +42,7 @@
                         <a class="nav-link " href="index.jsp">Home</a>
                     </li>
                     <li class="nav-item active ">
-                        <a class="nav-link " href="login.jsp">ID Card</a>
+                        <a class="nav-link " href="register.jsp">ID Card</a>
                     </li>
                     <li class="nav-item ">
                         <a class="nav-link  " href="contactus.jsp">Contact Us</a>
@@ -57,14 +57,14 @@
         
         
         
-        <div class="container py-5">
+        <div class="container py-3">
   <div class="row justify-content-center align-items-center ">
 
     <div class="col-md-7 contact-form ">
              
         <div class="col-md-12">
             <div class="contact-des" >
-                <h4>Student Registration </h4>
+                <h4>ID Card</h4>
                 
             </div>
                 <hr>
@@ -75,7 +75,7 @@
                 
                     
                      
-                     <form  action="RegS" method="POST" enctype="multipart/form-data">
+                     <form  action="Idcard" method="POST">
       
                        <div class="form-group">
                             <label >Roll No./ Scholar No.</label>
@@ -91,6 +91,18 @@
                             <label >Father's Name</label>
                             <input type="text" class="form-control" name="txtfname" placeholder="Enter the Father's Name">
                         </div>
+                         
+                         <div>   
+                         <label>Gender : </label>
+                         <div class=" form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="gender" id="gender" value="Male">
+                                <label class="form-check-label" for="inlineRadio1">Male</label>
+                              </div>
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="gender" id="gender" value="Female">
+                                <label class="form-check-label" for="inlineRadio2">Female</label>
+                              </div>
+                         </div>
 
                         <div class="form-group">
                             <label for="sel1">Course</label>
@@ -116,10 +128,7 @@
                             <input type="" class="form-control" name="txtmobile" placeholder="Example : 7979819668">
                         </div>
 
-                        <div class="mb-3">
-                            <label for="formFile" class="form-label">Profile picture</label>
-                            <input class="form-control" type="file" name="pic" id="formFile">
-                          </div>
+                   
                         <div class="form-group">
                             <label >Address</label>
                             <input type="addres" class="form-control" name="txtaddress" placeholder="Enter your Address ">
@@ -129,20 +138,10 @@
                             <label >Email address</label>
                             <input type="email" class="form-control" name="txtemail" placeholder="name@example.com">
                         </div>
-
                         <div class="form-group">
-                            <label >New Password</label>
-                            <input type="password" class="form-control" name="txtpass" placeholder="new password">
-                        </div>
-                        <div class="form-group">
-                            <label >confirm Password</label>
-                            <input type="password" class="form-control" name="txtcpass" placeholder="confirm password">
-                        </div>
-                        <div class="form-group">
-                                <label for="remember-me" class="text-info"><span>Remember me</span> <span><input id="remember-me" name="remember-me" type="checkbox"></span></label><br>
                                 
-                                <button type="register" class="btn btn-success">Register</button>
-                                <a href="login.jsp" class="btn btn-primary">Log in</a>
+                                <button type="register" class="btn btn-primary">Get Id Card</button>
+                                
                          </div>
                         
                     </form>
@@ -171,22 +170,7 @@
         
         
         
-       <div class="idea">
-            <div class="container">
-                <div class="idea-right" ">
-                    <hr>
-                    <h4>ideas share </h4>
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="text">
-                            <div class="input-group-append ml-auto">
-                             <button class="btn btn-success" type="submit">send</button>
-                            </div>
-                    </div>
-                </div>
-                
-            </div>
-            
-        </div>
+       
         
         <footer  class="py-3 footer-end ">
             <div class="container text-center">

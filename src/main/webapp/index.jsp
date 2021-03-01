@@ -46,7 +46,7 @@
                         <a class="nav-link " href="index.jsp">Home</a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link " href="login.jsp">ID Card</a>
+                        <a class="nav-link " href="register.jsp">ID Card</a>
                     </li>
                     <li class="nav-item ">
                         <a class="nav-link  " href="contactus.jsp">Contact Us</a>
@@ -64,8 +64,7 @@
             <div class="context-area">
                 <h1><span>Student ID Card</span></h1>
                 <span class="des">ID card generating system and authorized by an Institute. </span>
-                <a class="btn btn-success" href="login.jsp">Log in</a>
-                <a class="btn btn-primary" href="register.jsp">New Registration</a>
+                <a class="btn btn-success" href="register.jsp">Download ID CARD</a>
                 
             </div>
         </div>
@@ -89,22 +88,7 @@
        
         
        
-        <div class="idea">
-            <div class="container">
-                <div class="idea-right" ">
-                    <hr>
-                    <h4>ideas share </h4>
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="text">
-                            <div class="input-group-append">
-                                <button class="btn btn-success" type="submit">send</button>
-                            </div>
-                    </div>
-                </div>
-                
-            </div>
-            
-        </div>
+        
         
         <footer  class="py-3 footer-end ">
             <div class="container text-center">

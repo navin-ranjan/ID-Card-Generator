@@ -20,6 +20,10 @@ import javax.servlet.http.HttpServletResponse;
  * @author Navin Ranjan
  */
 public class Idcard extends HttpServlet {
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
     PrintWriter out;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -48,7 +52,7 @@ public class Idcard extends HttpServlet {
             String email=request.getParameter("txtemail");
             
             Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://aws-idcard.caecyauotwqb.us-east-2.rds.amazonaws.com:3306/idcard?useSSL=false&allowPublicKeyRetrieval=true","admin","Navin15498");
+            Connection con = DriverManager.getConnection("jdbc:mysql://aws-idcard.caecyauotwqb.us-east-2.rds.amazonaws.com:3306/idcard?useSSL=false&allowPublicKeyRetrieval=true","root","");
             Statement st =con.createStatement();
             int x=st.executeUpdate("INSERT INTO `regstu` (`scholar`, `name`, `fname`, `course`, `session`, `dob`, `mobile`, `gender`, `address`, `email`) VALUES ('"+lar+"', '"+name+"', '"+fname+"', '"+course+"', '"+session+"', '"+dob+"', '"+mobile+"', '"+gender+"', '"+address+"', '"+email+"')");
            if(x!=0)
