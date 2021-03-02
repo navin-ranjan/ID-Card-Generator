@@ -19,8 +19,8 @@
     </head>
     <body>
         <div class="container top p-3 ">
-            <div class="row ">
-            <img src="image/manit logo.png"class="img-thumbnail" alt="Cinque Terre" width="110px" height="110px" >
+            <div class="row  px-1">
+            <img class="p-2" src="image/manit logo.png"class="img-thumbnail" alt="Cinque Terre" width="110px" height="110px" >
             <div class="col-sm-8 manit-cl">
                 <h3 >Maulana Azad National Institute Technology </h3>
                 <h5>Bhopal, Madhaya Pradesh</h5>
@@ -31,12 +31,12 @@
         <!-- Grey with black text -->
         <nav class="navbar navbar-expand-sm p-1 sticky-top navbar-dark ">
             <div class="container">
-                <h6 class="navbar-dark nav-cl ">MANIT</h6>
+                <h6 class="navbar navbar-dark nav-cl ">MANIT</h6>
                 <button type="button" class="navbar-toggler " data-toggle="collapse" data-target="#mymenu">
                     <span class="navbar-toggler-icon "></span>
                     
                 </button>
-                <div class="collapse navbar-collapse " id="mymenu">
+                <div class="collapse navbar-collapse text-center " id="mymenu">
                 <ul class=" navbar-nav ml-auto" >
                     <li class="nav-item  ">
                         <a class="nav-link " href="index.jsp">Home</a>

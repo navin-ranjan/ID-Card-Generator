@@ -16,8 +16,8 @@
     </head>
     <body>
         <div class="container top p-3 ">
-            <div class="row ">
-            <img src="image/manit logo.png"class="img-thumbnail" alt="Cinque Terre" width="110px" height="110px" >
+            <div class="row px-1 ">
+            <img class="p-2" src="image/manit logo.png"class="img-thumbnail" alt="Cinque Terre" width="110px" height="110px" >
             <div class="col-sm-8 manit-cl">
                 <h3 >Maulana Azad National Institute Technology </h3>
                 <h5>Bhopal, Madhaya Pradesh</h5>
