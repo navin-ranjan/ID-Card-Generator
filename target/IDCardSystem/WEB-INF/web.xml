@@ -29,6 +29,14 @@
         <servlet-name>AdminLog</servlet-name>
         <servlet-class>AdminLog</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>contact</servlet-name>
+        <servlet-class>contactS</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Scontact</servlet-name>
+        <servlet-class>Scontact</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>java</servlet-name>
         <url-pattern>/java</url-pattern>
@@ -56,6 +64,14 @@
     <servlet-mapping>
         <servlet-name>AdminLog</servlet-name>
         <url-pattern>/AdminLog</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>contact</servlet-name>
+        <url-pattern>/contact</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Scontact</servlet-name>
+        <url-pattern>/Scontact</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>

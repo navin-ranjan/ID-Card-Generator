@@ -46,7 +46,7 @@ public class AdminLog extends HttpServlet {
             String pass=request.getParameter("txtpass");
             
             Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://aws-idcard.caecyauotwqb.us-east-2.rds.amazonaws.com:3306/idcard?useSSL=false&allowPublicKeyRetrieval=true","admin","Navin15498");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/idcard","root","");
             Statement st =con.createStatement();
             ResultSet x= st.executeQuery("select * from `admin` where uname='"+scholar+"' and pwd='"+pass+"'");
             if(x.next())

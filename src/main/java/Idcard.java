@@ -52,7 +52,7 @@ public class Idcard extends HttpServlet {
             String email=request.getParameter("txtemail");
             
             Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://aws-idcard.caecyauotwqb.us-east-2.rds.amazonaws.com:3306/idcard?useSSL=false&allowPublicKeyRetrieval=true","admin","Navin15498");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/idcard","root","");
             Statement st =con.createStatement();
             int x=st.executeUpdate("INSERT INTO `regstu` (`scholar`, `name`, `fname`, `course`, `session`, `dob`, `mobile`, `gender`, `address`, `email`) VALUES ('"+lar+"', '"+name+"', '"+fname+"', '"+course+"', '"+session+"', '"+dob+"', '"+mobile+"', '"+gender+"', '"+address+"', '"+email+"')");
            if(x!=0)
