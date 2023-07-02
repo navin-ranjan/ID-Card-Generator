@@ -13,6 +13,7 @@ public class IDCardWrapper {
 	private String collegeName;
 	private String degree;
 	private String session;
+	private String address;
 	private String mobile;
 	private String email;
 	private byte [] image;
@@ -51,6 +52,12 @@ public class IDCardWrapper {
 	}
 	public void setDob(String dob) {
 		this.dob = dob;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
 	}
 	public String getUniversityName() {
 		return universityName;
@@ -99,8 +106,8 @@ public class IDCardWrapper {
 	public String toString() {
 		return "IDCardWrapper [serialNumber=" + serialNumber + ", name=" + name + ", fatherName=" + fatherName
 				+ ", gender=" + gender + ", dob=" + dob + ", universityName=" + universityName + ", collegeName="
-				+ collegeName + ", degree=" + degree + ", session=" + session + ", mobile=" + mobile + ", email="
-				+ email + ", image=" + Arrays.toString(image) + "]";
+				+ collegeName + ", degree=" + degree + ", session=" + session + ", address=" + address + ", mobile="
+				+ mobile + ", email=" + email + ", image=" + Arrays.toString(image) + "]";
 	}
 	
 	
