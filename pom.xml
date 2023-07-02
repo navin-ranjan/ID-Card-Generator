@@ -22,6 +22,7 @@
 		<idcard.service.version>1.0.0</idcard.service.version>
 	</properties>
 	
+	
 	<modules>
 		<module>idcard-api</module>
 		<module>idcard-service</module>
