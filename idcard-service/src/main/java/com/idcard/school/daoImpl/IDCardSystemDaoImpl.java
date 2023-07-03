@@ -3,10 +3,14 @@ package com.idcard.school.daoImpl;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.boot.autoconfigure.cassandra.CassandraAutoConfiguration;
+
 import com.idcard.school.dao.IDCardSystemDao;
 import com.idcard.school.model.IDCardWrapper;
 
+
 public class IDCardSystemDaoImpl implements IDCardSystemDao{
+	
 
 	@Override
 	public IDCardWrapper createIdcard(IDCardWrapper idCardWrapper) {
