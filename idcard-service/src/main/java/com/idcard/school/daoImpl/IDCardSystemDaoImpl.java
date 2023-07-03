@@ -1,9 +1,10 @@
 package com.idcard.school.daoImpl;
 
-import java.util.List;
-import java.util.Map;
 
-import org.springframework.boot.autoconfigure.cassandra.CassandraAutoConfiguration;
+import java.util.*;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.cassandra.core.CassandraOperations;
 
 import com.idcard.school.dao.IDCardSystemDao;
 import com.idcard.school.model.IDCardWrapper;
@@ -11,6 +12,8 @@ import com.idcard.school.model.IDCardWrapper;
 
 public class IDCardSystemDaoImpl implements IDCardSystemDao{
 	
+	@Autowired
+	CassandraOperations cassandraOperations;
 
 	@Override
 	public IDCardWrapper createIdcard(IDCardWrapper idCardWrapper) {
