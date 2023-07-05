@@ -1,7 +1,9 @@
 package com.idcard.school.restImpl;
 
 import java.awt.image.BufferedImage;
+import java.nio.ByteBuffer;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -11,11 +13,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.data.cassandra.core.CassandraOperations;
 import org.springframework.data.cassandra.core.query.Criteria;
+import org.springframework.data.cassandra.core.query.Query;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.datastax.oss.driver.api.querybuilder.QueryBuilder;
+import com.datastax.oss.driver.api.querybuilder.insert.Insert;
+import com.datastax.oss.driver.api.querybuilder.insert.JsonInsert;
 import com.datastax.oss.driver.api.querybuilder.select.Select;
+import com.datastax.oss.driver.api.querybuilder.term.Term;
 import com.idcard.school.model.IDCardWrapper;
 import com.idcard.school.rest.IDCardSystemRest;
 import com.idcard.school.service.IDCardSystemService;
@@ -35,14 +41,39 @@ public class IDCardSystemRestImpl implements IDCardSystemRest {
 	@Autowired
 	private IDCardSystemService idService;
 	
+	@Autowired
+	private static CassandraOperations cassandraOperations;
+	
 	public static void main(String[] args) {
-		
-		String sb=new StringBuilder().append("valure").append("value").append("value3").toString();
-		
+				
+		// to select data query		
 		List<String> values = Arrays.asList("value1", "value2", "value3");		
-		Select query=QueryBuilder.selectFrom("idcardsystem", "idcard").column("name").whereColumn("name").isEqualTo(QueryBuilder.literal("navin"))
+		Select query=QueryBuilder.selectFrom("idcardsystem", "idcard").all().whereColumn("name").isEqualTo(QueryBuilder.literal("navin"))
 				;
-		System.out.println(query.asCql());
+		query=query.whereColumn("id").in(QueryBuilder.literal(values));
+		System.out.println(query.build());
+		
+		try {
+			//cassandraOperations.insert(query.build());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		//to data insert query
+		byte[] data = new byte[]{0x01, 0x02, 0x03};
+		ByteBuffer buffer = ByteBuffer.wrap(data);
+		Insert insertQuery = QueryBuilder.insertInto("keyspace_name", "table_name")
+                .value("column1", QueryBuilder.literal("value1"))
+                .value("column2", QueryBuilder.literal(42))
+                .value("column3", QueryBuilder.literal(true))
+                .value("column5", QueryBuilder.literal(buffer));
+		
+//		byte[] data = new byte[]{0x01, 0x02, 0x03};
+//
+//        // Convert the byte array to a ByteBuffer
+//        ByteBuffer buffer = ByteBuffer.wrap(data);
+		System.out.println(insertQuery.asCql());
 	}
 
 	@Override
