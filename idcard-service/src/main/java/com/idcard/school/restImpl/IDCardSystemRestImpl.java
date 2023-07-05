@@ -1,6 +1,7 @@
 package com.idcard.school.restImpl;
 
 import java.awt.image.BufferedImage;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -13,6 +14,8 @@ import org.springframework.data.cassandra.core.query.Criteria;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.datastax.oss.driver.api.querybuilder.QueryBuilder;
+import com.datastax.oss.driver.api.querybuilder.select.Select;
 import com.idcard.school.model.IDCardWrapper;
 import com.idcard.school.rest.IDCardSystemRest;
 import com.idcard.school.service.IDCardSystemService;
@@ -31,6 +34,16 @@ public class IDCardSystemRestImpl implements IDCardSystemRest {
 	
 	@Autowired
 	private IDCardSystemService idService;
+	
+	public static void main(String[] args) {
+		
+		String sb=new StringBuilder().append("valure").append("value").append("value3").toString();
+		
+		List<String> values = Arrays.asList("value1", "value2", "value3");		
+		Select query=QueryBuilder.selectFrom("idcardsystem", "idcard").column("name").whereColumn("name").isEqualTo(QueryBuilder.literal("navin"))
+				;
+		System.out.println(query.asCql());
+	}
 
 	@Override
 	public String home() {
