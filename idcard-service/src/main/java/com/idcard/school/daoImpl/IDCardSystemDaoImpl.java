@@ -16,21 +16,34 @@ public class IDCardSystemDaoImpl implements IDCardSystemDao{
 	CassandraOperations cassandraOperations;
 
 	@Override
-	public IDCardWrapper createIdcard(IDCardWrapper idCardWrapper) {
+	public boolean insertCQL(String query) {
+		return false;
+	}
+
+	@Override
+	public IDCardWrapper selectOneCQL(String query) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public byte[] getIdcard(String serialNo, Map<String, String> filter) {
+	public List<IDCardWrapper> selectAllCQL(String query) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Map<String, byte[]> getByteListOfIdcard(List<String> listOfSerialno, Map<String, String> filter) {
+	public IDCardWrapper updateCQL(String query) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public boolean deleteCQL(String query) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	
 
 }

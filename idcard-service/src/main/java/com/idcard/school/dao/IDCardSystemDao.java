@@ -7,11 +7,15 @@ import com.idcard.school.model.IDCardWrapper;
 
 public interface IDCardSystemDao{
 	
-	public IDCardWrapper createIdcard(IDCardWrapper idCardWrapper);
+	public boolean insertCQL(String query);
 	
-	public byte [] getIdcard(String serialNo, Map<String,String> filter);	
+	public IDCardWrapper selectOneCQL(String query);
 	
-	public Map<String, byte []> getByteListOfIdcard(List<String> listOfSerialno, Map<String,String> filter); 
+	public List<IDCardWrapper> selectAllCQL(String query);
+	
+	public IDCardWrapper updateCQL(String query);
+	
+	public boolean deleteCQL(String query);
 
 
 }

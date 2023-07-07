@@ -41,58 +41,23 @@ public class IDCardSystemRestImpl implements IDCardSystemRest {
 	
 	@Autowired
 	private IDCardSystemService idService;
-	
-	@Autowired
-	private CassandraOperations cassandraOperations;
-	
-//	public static void main(String[] args) {
-//				
-//		// to select data query		
-//		List<String> values = Arrays.asList("value1", "value2", "value3");		
-//		Select query=QueryBuilder.selectFrom("idcardsystem", "idcard").all().whereColumn("name").isEqualTo(QueryBuilder.literal("navin"))
-//				;
-//		query=query.whereColumn("id").in(QueryBuilder.literal(values));
-//		System.out.println(query.build());
-//		
-//		try {
-//			cassandraOperations.insert(query.build());
-//		} catch (Exception e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		
-//		//to data insert query
-//		byte[] data = new byte[]{0x01, 0x02, 0x03};
-//		ByteBuffer buffer = ByteBuffer.wrap(data);
-//		Insert insertQuery = QueryBuilder.insertInto("keyspace_name", "table_name")
-//                .value("column1", QueryBuilder.literal("value1"))
-//                .value("column2", QueryBuilder.literal(42))
-//                .value("column3", QueryBuilder.literal(true))
-//                .value("column5", QueryBuilder.literal(buffer));
-//		
-////		byte[] data = new byte[]{0x01, 0x02, 0x03};
-////
-////        // Convert the byte array to a ByteBuffer
-////        ByteBuffer buffer = ByteBuffer.wrap(data);
-//		System.out.println(insertQuery.asCql());
-//	}
 
 	@Override
 	public String home() {
 		logger.info("Insider the home method");
-		byte[] data = new byte[]{0x01, 0x02, 0x03};
-		ByteBuffer buffer = ByteBuffer.wrap(data);
-		Insert insertQuery = QueryBuilder.insertInto("idcardsystem", "idcard")
-                .value("serialno", QueryBuilder.literal("value1"))
-                .value("session", QueryBuilder.literal("MANIT"))
-                .value("university", QueryBuilder.literal("adgfdssd@gmail.com"))
-                .value("degree", QueryBuilder.literal("MCA"))
-                .value("college", QueryBuilder.literal("NIT BHOPAL"))                
-                .value("image", QueryBuilder.literal(buffer));
-		
-		System.out.println(insertQuery.asCql());
-		ResultSet sb= cassandraOperations.execute(insertQuery.build());
-		System.out.println(sb);
+//		byte[] data = new byte[]{0x01, 0x02, 0x03};
+//		ByteBuffer buffer = ByteBuffer.wrap(data);
+//		Insert insertQuery = QueryBuilder.insertInto("idcardsystem", "idcard")
+//                .value("serialno", QueryBuilder.literal("value1"))
+//                .value("session", QueryBuilder.literal("MANIT"))
+//                .value("university", QueryBuilder.literal("adgfdssd@gmail.com"))
+//                .value("degree", QueryBuilder.literal("MCA"))
+//                .value("college", QueryBuilder.literal("NIT BHOPAL"))                
+//                .value("image", QueryBuilder.literal(buffer));
+//		
+//		System.out.println(insertQuery.asCql());
+//		ResultSet sb= cassandraOperations.execute(insertQuery.build());
+//		System.out.println(sb);
 		return "welcome to Idcard project ... !";
 	}
 
@@ -118,27 +83,29 @@ public class IDCardSystemRestImpl implements IDCardSystemRest {
 
 	@Override
 	public byte[] getIdcard(String serialNo, String session, String university, String college, String degree) {
+		logger.info("Insider the getIdcard method  serialNo : {}, session : {}, university : {}, college : {}, degree : {}",serialNo,session,university,college,degree);
 		validateParam(session,university,college,degree);
-		return null;
+		return idService.getIdcard(serialNo, session, university, college, degree);
 	}
 
 	
 	@Override
 	public byte[] getListOfIdcard(List<String> listOfSerialno, String session, String university, String college,String degree) {
+		logger.info("Insider the getListOfIdcard method  listOfSerialno : {}, session : {}, university : {}, college : {}, degree : {}",listOfSerialno.toString(),session,university,college,degree);
 		validateParam(session,university,college,degree);
-		return Empty_Byte;
+		return idService.getListOfIdcard(listOfSerialno, session, university, college, degree);
 	}
 
 	@Override
-	public Map<String, BufferedImage> getBufferdListOfIdcard(List<String> listOfSerialno, String session, String university, String college,
-			String degree) {
+	public Map<String, BufferedImage> getBufferdListOfIdcard(List<String> listOfSerialno, String session, String university, String college,String degree) {
+		logger.info("Insider the getBufferdListOfIdcard method  listOfSerialno : {}, session : {}, university : {}, college : {}, degree : {}",listOfSerialno,session,university,college,degree);
 		validateParam(session,university,college,degree);
-		return null;
+		return idService.getBufferdListOfIdcard(listOfSerialno, session, university, college, degree);
 	}
 	
 	private void validateParam(String session, String university, String college, String degree) {
 		validateSession(session);
-		validateDegree(degree);
+		validateDegree(degree);				
 		validateUniversityandCollege(university,college);		
 		
 	}
