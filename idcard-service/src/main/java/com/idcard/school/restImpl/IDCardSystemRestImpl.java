@@ -1,9 +1,6 @@
 package com.idcard.school.restImpl;
 
 import java.awt.image.BufferedImage;
-import java.nio.ByteBuffer;
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -11,18 +8,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
-import org.springframework.data.cassandra.core.CassandraOperations;
-import org.springframework.data.cassandra.core.query.Criteria;
-import org.springframework.data.cassandra.core.query.Query;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.datastax.oss.driver.api.core.cql.ResultSet;
-import com.datastax.oss.driver.api.querybuilder.QueryBuilder;
-import com.datastax.oss.driver.api.querybuilder.insert.Insert;
-import com.datastax.oss.driver.api.querybuilder.insert.JsonInsert;
-import com.datastax.oss.driver.api.querybuilder.select.Select;
-import com.datastax.oss.driver.api.querybuilder.term.Term;
 import com.idcard.school.model.IDCardWrapper;
 import com.idcard.school.rest.IDCardSystemRest;
 import com.idcard.school.service.IDCardSystemService;
@@ -45,26 +33,13 @@ public class IDCardSystemRestImpl implements IDCardSystemRest {
 	@Override
 	public String home() {
 		logger.info("Insider the home method");
-//		byte[] data = new byte[]{0x01, 0x02, 0x03};
-//		ByteBuffer buffer = ByteBuffer.wrap(data);
-//		Insert insertQuery = QueryBuilder.insertInto("idcardsystem", "idcard")
-//                .value("serialno", QueryBuilder.literal("value1"))
-//                .value("session", QueryBuilder.literal("MANIT"))
-//                .value("university", QueryBuilder.literal("adgfdssd@gmail.com"))
-//                .value("degree", QueryBuilder.literal("MCA"))
-//                .value("college", QueryBuilder.literal("NIT BHOPAL"))                
-//                .value("image", QueryBuilder.literal(buffer));
-//		
-//		System.out.println(insertQuery.asCql());
-//		ResultSet sb= cassandraOperations.execute(insertQuery.build());
-//		System.out.println(sb);
 		return "welcome to Idcard project ... !";
 	}
 
 	@Override
 	public IDCardWrapper createIdcard(IDCardWrapper idCardWrapper) {
-		logger.info("Insider the createIdcard method with entity value : {} ", idCardWrapper.toString());
-			if(!StringUtil.isNullOrEmpty(idCardWrapper.getName())&& !StringUtil.isNullOrEmpty(idCardWrapper.getSerialNumber())) {
+		logger.info("Insider the createIdcard method with entity value : {} ", idCardWrapper.toStringSize());
+			if(!StringUtil.isNullOrEmpty(idCardWrapper.getName())&& !StringUtil.isNullOrEmpty(idCardWrapper.getSerialNumber()) && idCardWrapper.getPhoto()!=null) {
 				validateFatherName(idCardWrapper.getFatherName());
 				validateGender(idCardWrapper.getGender());
 				validateDOB(idCardWrapper.getDob());
@@ -75,7 +50,7 @@ public class IDCardSystemRestImpl implements IDCardSystemRest {
 				validateAddress(idCardWrapper.getAddress());
 				return idService.createIdcard(idCardWrapper);
 			} else {
-				logger.error("name: {} and serialno : {} not valid",idCardWrapper.getName(),idCardWrapper.getSerialNumber());
+				logger.error("name: {}, serialno : {}, photo : {} not valid",idCardWrapper.getName(),idCardWrapper.getSerialNumber(),idCardWrapper.getPhoto().length);
 				
 			}
 		return Empty_IDCard_Data;

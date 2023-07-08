@@ -1,21 +1,20 @@
 package com.idcard.school.dao;
 
 import java.util.List;
-import java.util.Map;
-
 import com.idcard.school.model.IDCardWrapper;
 
 public interface IDCardSystemDao{
 	
-	public boolean insertCQL(String query);
+	public boolean insertCQL(IDCardWrapper idCardWrapper);
 	
-	public IDCardWrapper selectOneCQL(String query);
+	public IDCardWrapper selectOneCQL(IDCardWrapper idCardWrapper);
 	
-	public List<IDCardWrapper> selectAllCQL(String query);
+	public List<IDCardWrapper> selectAllCQL(List<String> listOfSerialno, String session, String university, String college,
+			String degree);
 	
-	public IDCardWrapper updateCQL(String query);
+	public IDCardWrapper updateCQL(IDCardWrapper idCardWrapper);
 	
-	public boolean deleteCQL(String query);
+	public boolean deleteCQL(IDCardWrapper idCardWrapper);
 
 
 }

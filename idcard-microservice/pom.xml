@@ -16,7 +16,6 @@
 		<java.version>11</java.version>
 	</properties>
 	<dependencies>
-		
 		<dependency>
 		    <groupId>com.inn.navin</groupId>
 		    <artifactId>idcard-api</artifactId>

@@ -16,10 +16,17 @@ public class IDCardWrapper {
 	private String address;
 	private String mobile;
 	private String email;
+	private byte [] photo;
 	private byte [] image;
 	
 	
 	
+	public byte[] getPhoto() {
+		return photo;
+	}
+	public void setPhoto(byte[] photo) {
+		this.photo = photo;
+	}
 	public IDCardWrapper() {
 		super();
 	}
@@ -107,7 +114,20 @@ public class IDCardWrapper {
 		return "IDCardWrapper [serialNumber=" + serialNumber + ", name=" + name + ", fatherName=" + fatherName
 				+ ", gender=" + gender + ", dob=" + dob + ", universityName=" + universityName + ", collegeName="
 				+ collegeName + ", degree=" + degree + ", session=" + session + ", address=" + address + ", mobile="
-				+ mobile + ", email=" + email + ", image=" + Arrays.toString(image) + "]";
+				+ mobile + ", email=" + email + ", photo=" + Arrays.toString(photo) + ", image="
+				+ Arrays.toString(image) + "]";
+	}
+	
+	public String toStringSize() {
+		String strSize= "IDCardWrapper [serialNumber=" + serialNumber + ", name=" + name + ", fatherName=" + fatherName
+				+ ", gender=" + gender + ", dob=" + dob + ", universityName=" + universityName + ", collegeName="
+				+ collegeName + ", degree=" + degree + ", session=" + session + ", address=" + address + ", mobile="
+				+ mobile + ", email=" + email + ", photo=";
+		strSize+=photo!=null ? photo.length + ", image=": Arrays.toString(photo) + ", image=";
+		strSize+=image!=null ? image.length + "]": Arrays.toString(image) + "]";
+		
+		return strSize;
+		
 	}
 	
 	
