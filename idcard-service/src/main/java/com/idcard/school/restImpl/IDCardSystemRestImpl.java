@@ -8,6 +8,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -59,16 +60,25 @@ public class IDCardSystemRestImpl implements IDCardSystemRest {
 	@Override
 	public byte[] getIdcard(String serialNo, String session, String university, String college, String degree) {
 		logger.info("Insider the getIdcard method  serialNo : {}, session : {}, university : {}, college : {}, degree : {}",serialNo,session,university,college,degree);
-		validateParam(session,university,college,degree);
-		return idService.getIdcard(serialNo, session, university, college, degree);
+		if(!StringUtil.isNullOrEmpty(serialNo)){
+			validateParam(session,university,college,degree);
+			return idService.getIdcard(serialNo, session, university, college, degree);
+		}else
+			logger.error("serialno : {}",serialNo);
+					
+		return Empty_Byte;
 	}
-
 	
 	@Override
 	public byte[] getListOfIdcard(List<String> listOfSerialno, String session, String university, String college,String degree) {
 		logger.info("Insider the getListOfIdcard method  listOfSerialno : {}, session : {}, university : {}, college : {}, degree : {}",listOfSerialno.toString(),session,university,college,degree);
-		validateParam(session,university,college,degree);
-		return idService.getListOfIdcard(listOfSerialno, session, university, college, degree);
+		if(listOfSerialno.size()>0){
+			validateParam(session,university,college,degree);
+			return idService.getListOfIdcard(listOfSerialno, session, university, college, degree);
+		}else
+			logger.error("list of serialno : {}",listOfSerialno);
+
+		return Empty_Byte;
 	}
 
 	@Override

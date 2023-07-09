@@ -28,6 +28,9 @@ import com.idcard.school.service.IDCardSystemService;
 public class IDCardSystemServiceImpl implements IDCardSystemService {
 
 	private static Logger logger = LogManager.getLogger(IDCardSystemServiceImpl.class);
+	
+	private static final byte [] Empty_Byte=null;
+	private static final IDCardWrapper Empty_IDCard_Data=null;
 
 	@Autowired
 	private IDCardSystemDao idDao;
@@ -148,34 +151,48 @@ public class IDCardSystemServiceImpl implements IDCardSystemService {
 			// Close the document
 			document.close();
 			logger.info("final idcard image : {} ", idCardWrapper.getImage().length);
-			if(idDao.insertCQL(idCardWrapper)){
+			if (idDao.insertCQL(idCardWrapper)) {
 				return idCardWrapper;
 			}
 		} catch (Exception e) {
-			System.out.println(e.getStackTrace());
 			logger.info("error found in createidcard : {}", e.getMessage());
 		}
 
-		return new IDCardWrapper();
+		return Empty_IDCard_Data;
 	}
 
 	@Override
 	public byte[] getIdcard(String serialNo, String session, String university, String college, String degree) {
-		logger.info(
-				"Insider the getIdcard method  serialNo : {}, session : {}, university : {}, college : {}, degree : {}",
+		logger.info("Insider the getIdcard method  serialNo : {}, session : {}, university : {}, college : {}, degree : {}",
 				serialNo, session, university, college, degree);
+			IDCardWrapper idCardWrapper=new IDCardWrapper();
+			idCardWrapper.setSerialNumber(serialNo);
+			idCardWrapper.setSession(session);
+			idCardWrapper.setUniversityName(university);
+			idCardWrapper.setCollegeName(college);
+			idCardWrapper.setDegree(degree);
+			idCardWrapper = idDao.selectOneCQL(idCardWrapper);
+			if(idCardWrapper.getImage()!=null){
+				return idCardWrapper.getImage();
+			}else
+				logger.info("Data not found");
 
-		return null;
+		return Empty_Byte;
 	}
 
 	@Override
 	public byte[] getListOfIdcard(List<String> listOfSerialno, String session, String university, String college,
 			String degree) {
-		logger.info(
-				"Insider the getListOfIdcard method  listOfSerialno : {}, session : {}, university : {}, college : {}, degree : {}",
+		logger.info("Insider the getListOfIdcard method  listOfSerialno : {}, session : {}, university : {}, college : {}, degree : {}",
 				listOfSerialno.toString(), session, university, college, degree);
 
-		return null;
+			List<IDCardWrapper> listofIdcrad=idDao.selectAllCQL(listOfSerialno, session, university, college, degree);
+			if(listofIdcrad.size()>0){
+				
+
+			}else
+				logger.info("Data not found");
+		return Empty_Byte;
 	}
 
 	@Override

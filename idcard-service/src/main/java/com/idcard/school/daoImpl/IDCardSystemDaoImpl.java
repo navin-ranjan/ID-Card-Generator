@@ -10,10 +10,14 @@ import org.springframework.data.cassandra.core.CassandraOperations;
 import org.springframework.stereotype.Service;
 
 import com.datastax.oss.driver.api.core.cql.ResultSet;
+import com.datastax.oss.driver.api.core.cql.Row;
 import com.datastax.oss.driver.api.querybuilder.QueryBuilder;
 import com.datastax.oss.driver.api.querybuilder.insert.Insert;
+import com.datastax.oss.driver.api.querybuilder.select.Select;
 import com.idcard.school.dao.IDCardSystemDao;
 import com.idcard.school.model.IDCardWrapper;
+
+import io.netty.util.internal.StringUtil;
 
 @Service
 public class IDCardSystemDaoImpl implements IDCardSystemDao {
@@ -72,15 +76,109 @@ public class IDCardSystemDaoImpl implements IDCardSystemDao {
 
 	@Override
 	public IDCardWrapper selectOneCQL(IDCardWrapper idCardWrapper) {
-		// TODO Auto-generated method stub
-		return null;
+
+		try {
+
+			Select select = QueryBuilder.selectFrom(KEYSPACE_NAME, TABLE_NAME).all().whereColumn(serialno)
+					.isEqualTo(QueryBuilder.literal(idCardWrapper.getSerialNumber()));
+			if (!StringUtil.isNullOrEmpty(idCardWrapper.getSession())) {
+				select = select.whereColumn(session).isEqualTo(QueryBuilder.literal(idCardWrapper.getSession()));
+			}
+			if (!StringUtil.isNullOrEmpty(idCardWrapper.getUniversityName())) {
+				select = select.whereColumn(university)
+						.isEqualTo(QueryBuilder.literal(idCardWrapper.getUniversityName()));
+			}
+			if (!StringUtil.isNullOrEmpty(idCardWrapper.getCollegeName())) {
+				select = select.whereColumn(college).isEqualTo(QueryBuilder.literal(idCardWrapper.getCollegeName()));
+			}
+			if (!StringUtil.isNullOrEmpty(idCardWrapper.getDegree())) {
+				select = select.whereColumn(degree).isEqualTo(QueryBuilder.literal(idCardWrapper.getDegree()));
+			}
+			logger.info("Select CQL Query : {}", select.asCql());
+			ResultSet resultSet = cassandraOperations.execute(select.build());
+
+			if (resultSet.wasApplied()) {
+				for(Row row:resultSet){
+					idCardWrapper.setPhoto(row.getBytesUnsafe(photo).array());
+					idCardWrapper.setImage(row.getBytesUnsafe(image).array());
+					idCardWrapper.setAddress(row.getString(address));
+					idCardWrapper.setDob(row.getString(dob));
+					idCardWrapper.setEmail(row.getString(email));
+					idCardWrapper.setFatherName(row.getString(fathername));
+					idCardWrapper.setGender(row.getString(gender));
+					idCardWrapper.setMobile(row.getString(mobile));
+					idCardWrapper.setName(row.getString(name));
+				}
+				logger.info("Data found image size : {}",idCardWrapper.getImage().length);
+				return idCardWrapper;
+			}		
+
+		} catch (Exception e) {
+			logger.error("Data not available in database : {}",e.getMessage());
+		}
+
+		return new IDCardWrapper();
 	}
 
 	@Override
-	public List<IDCardWrapper> selectAllCQL(List<String> listOfSerialno, String session, String university,
-			String college, String degree) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<IDCardWrapper> selectAllCQL(List<String> listOfSerialno, String sessionString, String universityName, String collegeString, String degreeString) {
+		try {
+
+			String serialNoString=extractSerialNumber(listOfSerialno);
+			Select select = QueryBuilder.selectFrom(KEYSPACE_NAME, TABLE_NAME).all().whereColumn(serialno)
+			.in(QueryBuilder.literal(serialNoString));
+			if (!StringUtil.isNullOrEmpty(sessionString)) {
+				select = select.whereColumn(session).isEqualTo(QueryBuilder.literal(sessionString));
+			}
+			if (!StringUtil.isNullOrEmpty(universityName)) {
+				select = select.whereColumn(university).isEqualTo(QueryBuilder.literal(universityName));
+			}
+			if (!StringUtil.isNullOrEmpty(collegeString)) {
+				select = select.whereColumn(college).isEqualTo(QueryBuilder.literal(collegeString));
+			}
+			if (!StringUtil.isNullOrEmpty(degreeString)) {
+				select = select.whereColumn(degree).isEqualTo(QueryBuilder.literal(degreeString));
+			}
+			logger.info("Select CQL Query : {}", select.asCql());
+			ResultSet resultSet = cassandraOperations.execute(select.build());
+			List<IDCardWrapper> resultOfIdcard=new ArrayList<>();
+
+			if (resultSet.wasApplied()) {
+				for(Row row:resultSet){
+					IDCardWrapper idCardWrapper=new IDCardWrapper();
+					idCardWrapper.setUniversityName(universityName);
+					idCardWrapper.setCollegeName(collegeString);
+					idCardWrapper.setSession(sessionString);
+					idCardWrapper.setDegree(degreeString);
+					idCardWrapper.setPhoto(row.getBytesUnsafe(photo).array());
+					idCardWrapper.setImage(row.getBytesUnsafe(image).array());
+					idCardWrapper.setAddress(row.getString(address));
+					idCardWrapper.setDob(row.getString(dob));
+					idCardWrapper.setEmail(row.getString(email));
+					idCardWrapper.setFatherName(row.getString(fathername));
+					idCardWrapper.setGender(row.getString(gender));
+					idCardWrapper.setMobile(row.getString(mobile));
+					idCardWrapper.setName(row.getString(name));
+					resultOfIdcard.add(idCardWrapper);
+				}
+				logger.info("Data found No. of row :{}",resultOfIdcard.size());
+				return resultOfIdcard;
+			}		
+
+		} catch (Exception e) {
+			logger.error("Data not available in database : {}",e.getMessage());
+		}
+
+		return new ArrayList<IDCardWrapper>();
+	}
+
+	private String extractSerialNumber(List<String> listOfSerialno) {
+		StringBuilder sb=new StringBuilder();
+		for(String s:listOfSerialno){
+			sb.append("'"+s+"',");
+		}
+		String resultSerials=sb.toString().substring(1, sb.toString().length()-2); 
+		return resultSerials;
 	}
 
 	@Override
