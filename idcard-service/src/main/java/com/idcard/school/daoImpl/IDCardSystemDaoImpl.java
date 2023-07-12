@@ -120,13 +120,26 @@ public class IDCardSystemDaoImpl implements IDCardSystemDao {
 		return new IDCardWrapper();
 	}
 
+	public static void main(String[] args) {
+		String [] arr={"78957","76265","7636855", "387766","378378"};
+		List<String> listOfString= Arrays.asList(arr);
+		Select select = QueryBuilder.selectFrom(KEYSPACE_NAME, TABLE_NAME).all().whereColumn(serialno)
+					.isEqualTo(QueryBuilder.literal("163535gh")).whereColumn("kpi").in(QueryBuilder.literal(listOfString));
+		String finalQuery=select.asCql().replace("[", "").replace("]", "");		
+
+		System.out.println(select.asCql());
+		System.out.println(finalQuery);
+
+			
+	}
+
 	@Override
 	public List<IDCardWrapper> selectAllCQL(List<String> listOfSerialno, String sessionString, String universityName, String collegeString, String degreeString) {
 		try {
 
 			String serialNoString=extractSerialNumber(listOfSerialno);
 			Select select = QueryBuilder.selectFrom(KEYSPACE_NAME, TABLE_NAME).all().whereColumn(serialno)
-			.in(QueryBuilder.literal(serialNoString));
+			.in(QueryBuilder.bindMarker(serialNoString));
 			if (!StringUtil.isNullOrEmpty(sessionString)) {
 				select = select.whereColumn(session).isEqualTo(QueryBuilder.literal(sessionString));
 			}
@@ -173,11 +186,15 @@ public class IDCardSystemDaoImpl implements IDCardSystemDao {
 	}
 
 	private String extractSerialNumber(List<String> listOfSerialno) {
+		logger.info("list of serial no : {}",listOfSerialno);
 		StringBuilder sb=new StringBuilder();
 		for(String s:listOfSerialno){
-			sb.append("'"+s+"',");
+			String x="'"+s+"'"+",";
+			logger.info("string value : {}",x);
+			sb.append(x);
 		}
-		String resultSerials=sb.toString().substring(1, sb.toString().length()-2); 
+		System.out.println(sb.toString());
+		String resultSerials=sb.toString().substring(0, sb.toString().length()-1); 
 		return resultSerials;
 	}
 
