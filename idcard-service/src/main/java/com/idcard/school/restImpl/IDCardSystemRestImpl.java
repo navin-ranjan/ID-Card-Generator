@@ -1,6 +1,7 @@
 package com.idcard.school.restImpl;
 
 import java.awt.image.BufferedImage;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -70,7 +71,7 @@ public class IDCardSystemRestImpl implements IDCardSystemRest {
 	}
 	
 	@Override
-	public byte[] getListOfIdcard(List<String> listOfSerialno, String session, String university, String college,String degree) {
+	public Map<String, byte[]> getListOfIdcard(List<String> listOfSerialno, String session, String university, String college,String degree) {
 		logger.info("Insider the getListOfIdcard method  listOfSerialno : {}, session : {}, university : {}, college : {}, degree : {}",listOfSerialno.toString(),session,university,college,degree);
 		if(listOfSerialno.size()>0){
 			validateParam(session,university,college,degree);
@@ -78,7 +79,7 @@ public class IDCardSystemRestImpl implements IDCardSystemRest {
 		}else
 			logger.error("list of serialno : {}",listOfSerialno);
 
-		return Empty_Byte;
+		return new HashMap<>();
 	}
 
 	@Override

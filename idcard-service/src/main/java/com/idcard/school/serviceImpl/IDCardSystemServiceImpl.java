@@ -3,6 +3,7 @@ package com.idcard.school.serviceImpl;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -181,18 +182,18 @@ public class IDCardSystemServiceImpl implements IDCardSystemService {
 	}
 
 	@Override
-	public byte[] getListOfIdcard(List<String> listOfSerialno, String session, String university, String college,
+	public Map<String, byte[]> getListOfIdcard(List<String> listOfSerialno, String session, String university, String college,
 			String degree) {
 		logger.info("Insider the getListOfIdcard method  listOfSerialno : {}, session : {}, university : {}, college : {}, degree : {}",
 				listOfSerialno.toString(), session, university, college, degree);
-
-			List<IDCardWrapper> listofIdcrad=idDao.selectAllCQL(listOfSerialno, session, university, college, degree);
-			if(listofIdcrad.size()>0){
-				
-
+			Map<String,byte []> listofresult=new HashMap<>();
+			List<IDCardWrapper> listofIdcard=idDao.selectAllCQL(listOfSerialno, session, university, college, degree);
+			if(listofIdcard.size()>0){
+				for(IDCardWrapper id:listofIdcard)
+					listofresult.put(id.getSerialNumber(), id.getImage());
 			}else
 				logger.info("Data not found");
-		return Empty_Byte;
+		return listofresult;
 	}
 
 	@Override
@@ -202,7 +203,7 @@ public class IDCardSystemServiceImpl implements IDCardSystemService {
 				"Insider the getBufferdListOfIdcard method  listOfSerialno : {}, session : {}, university : {}, college : {}, degree : {}",
 				listOfSerialno.toString(), session, university, college, degree);
 
-		return null;
+		return new HashMap<>();
 	}
 
 }

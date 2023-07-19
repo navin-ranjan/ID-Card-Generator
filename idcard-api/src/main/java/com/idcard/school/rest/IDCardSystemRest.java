@@ -38,7 +38,8 @@ public interface IDCardSystemRest {
 			@Extension(properties = { @ExtensionProperty(name = "x-auth-type", value = "None") }) })
 	@PostMapping(path = "createIdcard", consumes = { MediaType.APPLICATION_JSON_VALUE })
 	public IDCardWrapper createIdcard(
-			@ApiParam(value = "to pass idcard wrapper") @NonNull @RequestBody(required = true) IDCardWrapper idCardWrapper) throws Exception;
+			@ApiParam(value = "to pass idcard wrapper") @NonNull @RequestBody(required = true) IDCardWrapper idCardWrapper)
+			throws Exception;
 
 	@ApiOperation(value = "To get Student IDCard ", response = BYTE_ARRAY.class, tags = "getIdcard", extensions = {
 			@Extension(properties = { @ExtensionProperty(name = "x-auth-type", value = "None") }) })
@@ -53,7 +54,7 @@ public interface IDCardSystemRest {
 	@ApiOperation(value = "To get List of Student IDCard by session, serialno and college", response = BYTE_ARRAY.class, tags = "getListOfIdcard", extensions = {
 			@Extension(properties = { @ExtensionProperty(name = "x-auth-type", value = "None") }) })
 	@GetMapping(path = "getListOfIdcard", produces = { MediaType.APPLICATION_OCTET_STREAM_VALUE })
-	public byte[] getListOfIdcard(
+	public Map<String,byte[]> getListOfIdcard(
 			@ApiParam(value = "to pass list of student serial number") @RequestBody(required = false) List<String> listOfSerialno,
 			@ApiParam(value = "to pass college session") @NonNull @RequestParam(required = true, name = "session") String session,
 			@ApiParam(value = "to pass student university Name") @NonNull @RequestParam(required = true, name = "university") String university,
