@@ -1,6 +1,7 @@
 package com.idcard.school.restImpl;
 
 import java.awt.image.BufferedImage;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,8 +13,10 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.idcard.school.model.IDCardWrapper;
+import com.idcard.school.model.ResponseWrapper;
 import com.idcard.school.rest.IDCardSystemRest;
 import com.idcard.school.service.IDCardSystemService;
 
@@ -35,24 +38,33 @@ public class IDCardSystemRestImpl implements IDCardSystemRest {
 	@Override
 	public String home() {
 		logger.info("Insider the home method");
-		return "welcome to Idcard project ... !";
+		return "ok";
 	}
 
 	@Override
-	public IDCardWrapper createIdcard(IDCardWrapper idCardWrapper) {
-		logger.info("Insider the createIdcard method with entity value : {} ", idCardWrapper.toStringSize());
-			if(!StringUtil.isNullOrEmpty(idCardWrapper.getName())&& !StringUtil.isNullOrEmpty(idCardWrapper.getSerialNumber()) && idCardWrapper.getPhoto()!=null) {
-				validateFatherName(idCardWrapper.getFatherName());
+	public ResponseWrapper createIdcard(ResponseWrapper responseWrapper, MultipartFile photo) {
+		logger.info("Insider the createIdcard method with entity value : {}, image filename : {} ", responseWrapper.toString(), photo.getOriginalFilename());
+			if(!StringUtil.isNullOrEmpty(responseWrapper.getName())&& !StringUtil.isNullOrEmpty(responseWrapper.getSerialNumber()) && photo!=null) {
+				IDCardWrapper idCardWrapper=new IDCardWrapper();
+				idCardWrapper.setSerialNumber(responseWrapper.getSerialNumber());
+				idCardWrapper.setName(responseWrapper.getName());
+				idCardWrapper.setFatherName(responseWrapper.getFatherName());
+				idCardWrapper.setDob(responseWrapper.getDob());
+				idCardWrapper.setAddress(responseWrapper.getAddress());
+				idCardWrapper.setCollegeName(responseWrapper.getCollegeName());
+				idCardWrapper.setDegree(responseWrapper.getDegree());
+				idCardWrapper.setEmail(responseWrapper.getEmail());
+				idCardWrapper.setGender(responseWrapper.getGender());
+				idCardWrapper.setMobile(responseWrapper.getMobile());
+				idCardWrapper.setPhoto(photo.getBytes());
 				validateGender(idCardWrapper.getGender());
 				validateDOB(idCardWrapper.getDob());
 				validateDegree(idCardWrapper.getDegree());
 				validateSession(idCardWrapper.getSession());
 				validateMobile(idCardWrapper.getMobile());
-				validateUniversityandCollege(idCardWrapper.getUniversityName(),idCardWrapper.getCollegeName());
-				validateAddress(idCardWrapper.getAddress());
 				return idService.createIdcard(idCardWrapper);
 			} else {
-				logger.error("name: {}, serialno : {}, photo : {} not valid",idCardWrapper.getName(),idCardWrapper.getSerialNumber(),idCardWrapper.getPhoto().length);
+				logger.error("name: {}, serialno : {} not valid",responseWrapper.getName(),responseWrapper.getSerialNumber());
 				
 			}
 		return Empty_IDCard_Data;
@@ -135,6 +147,13 @@ public class IDCardSystemRestImpl implements IDCardSystemRest {
 	private void validateFatherName(String fatherName) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public IDCardWrapper createIdcardByFile( MultipartFile file) throws Exception {
+		System.out.println(Arrays.toString(file.getBytes()));
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Unimplemented method 'createIdcardByFile'");
 	}
 
 }

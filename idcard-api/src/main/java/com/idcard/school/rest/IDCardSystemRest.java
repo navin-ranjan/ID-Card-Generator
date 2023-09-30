@@ -13,11 +13,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.idcard.school.model.IDCardWrapper;
+import com.idcard.school.model.ResponseWrapper;
 
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.Extension;
@@ -27,18 +32,19 @@ import io.swagger.annotations.Tag;
 
 @ResponseBody
 @FeignClient(name = "IDCardSystemRest", url = "${idcard-service.url}", path = "/idcard", primary = false)
-@Api(tags = { "IDCardSystemRest" })
+//@Api(tags = { "ID Card Generator " })
 @SwaggerDefinition(tags = { @Tag(name = "IDcardSystem", description = "Rest APIs of IDCardSystem") })
 public interface IDCardSystemRest {
 
-	@GetMapping(path = "home")
+	@GetMapping(path = "ping")
 	public String home();
 
-	@ApiOperation(value = "To create Student IDCard ", response = Map.class, tags = "createIdcard", extensions = {
+	@ApiOperation(value = "To create Student IDCard ", response =Object.class, tags = "createIdcard", extensions = {
 			@Extension(properties = { @ExtensionProperty(name = "x-auth-type", value = "None") }) })
-	@PostMapping(path = "createIdcard", consumes = { MediaType.APPLICATION_JSON_VALUE })
-	public IDCardWrapper createIdcard(
-			@ApiParam(value = "to pass idcard wrapper") @NonNull @RequestBody(required = true) IDCardWrapper idCardWrapper)
+	@PostMapping(path = "createIdcard", consumes = { MediaType.MULTIPART_FORM_DATA_VALUE })
+	public ResponseWrapper createIdcard(
+			@ApiParam(value = "to pass idcard required field") @RequestBody(required = true) ResponseWrapper responseWrapper,
+			@RequestPart("image") @ApiParam(value="upload passport size image", required=true) MultipartFile image)
 			throws Exception;
 
 	@ApiOperation(value = "To get Student IDCard ", response = BYTE_ARRAY.class, tags = "getIdcard", extensions = {
@@ -51,24 +57,5 @@ public interface IDCardSystemRest {
 			@ApiParam(value = "to pass student college Name") @RequestParam(required = false, name = "college") String college,
 			@ApiParam(value = "to pass student degree Name") @RequestParam(required = false, name = "degree") String degree);
 
-	@ApiOperation(value = "To get List of Student IDCard by session, serialno and college", response = BYTE_ARRAY.class, tags = "getListOfIdcard", extensions = {
-			@Extension(properties = { @ExtensionProperty(name = "x-auth-type", value = "None") }) })
-	@GetMapping(path = "getListOfIdcard", produces = { MediaType.APPLICATION_OCTET_STREAM_VALUE })
-	public Map<String,byte[]> getListOfIdcard(
-			@ApiParam(value = "to pass list of student serial number") @RequestBody(required = false) List<String> listOfSerialno,
-			@ApiParam(value = "to pass college session") @NonNull @RequestParam(required = true, name = "session") String session,
-			@ApiParam(value = "to pass student university Name") @NonNull @RequestParam(required = true, name = "university") String university,
-			@ApiParam(value = "to pass student college Name") @NonNull @RequestParam(required = true, name = "college") String college,
-			@ApiParam(value = "to pass student degree Name") @NonNull @RequestParam(required = true, name = "degree") String degree);
-
-	@ApiOperation(value = "To get List of Student IDCard by session, serialno and college", response = Map.class, tags = "getBufferdListOfIdcard", extensions = {
-			@Extension(properties = { @ExtensionProperty(name = "x-auth-type", value = "None") }) })
-	@GetMapping(path = "getBufferdListOfIdcard", produces = { MediaType.APPLICATION_JSON_VALUE })
-	public Map<String, BufferedImage> getBufferdListOfIdcard(
-			@ApiParam(value = "to pass list of student serial number") @RequestBody(required = false) List<String> listOfSerialno,
-			@ApiParam(value = "to pass college session") @NonNull @RequestParam(required = true, name = "session") String session,
-			@ApiParam(value = "to pass student university Name") @NonNull @RequestParam(required = true, name = "university") String university,
-			@ApiParam(value = "to pass student college Name") @NonNull @RequestParam(required = true, name = "college") String college,
-			@ApiParam(value = "to pass student degree Name") @NonNull @RequestParam(required = true, name = "degree") String degree);
-
+	
 }

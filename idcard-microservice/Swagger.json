@@ -1,0 +1,1541 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "This project developed by Navin Ranjan",
+        "version": "1.0.0",
+        "title": "ID Card System",
+        "termsOfService": "Term of Service",
+        "contact": {
+            "name": "Navin Ranjan",
+            "url": "https://github.com/navin-ranjan/IDCardSystem/",
+            "email": "navinranjan15498@Gmail.com"
+        },
+        "license": {
+            "name": "Licences of API",
+            "url": "API licences URL"
+        }
+    },
+    "host": "localhost:9080",
+    "tags": [
+        {
+            "name": "IDCardSystemRest",
+            "description": "ID Card System Rest Impl"
+        },
+        {
+            "name": "basic-error-controller",
+            "description": "Basic Error Controller"
+        }
+    ],
+    "paths": {
+        "/idcard/rest/error": {
+            "get": {
+                "tags": [
+                    "basic-error-controller"
+                ],
+                "summary": "errorHtml",
+                "operationId": "errorHtmlUsingGET",
+                "produces": [
+                    "text/html"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ModelAndView"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            },
+            "head": {
+                "tags": [
+                    "basic-error-controller"
+                ],
+                "summary": "errorHtml",
+                "operationId": "errorHtmlUsingHEAD",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "text/html"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ModelAndView"
+                        }
+                    },
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "basic-error-controller"
+                ],
+                "summary": "errorHtml",
+                "operationId": "errorHtmlUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "text/html"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ModelAndView"
+                        }
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "basic-error-controller"
+                ],
+                "summary": "errorHtml",
+                "operationId": "errorHtmlUsingPUT",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "text/html"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ModelAndView"
+                        }
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "basic-error-controller"
+                ],
+                "summary": "errorHtml",
+                "operationId": "errorHtmlUsingDELETE",
+                "produces": [
+                    "text/html"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ModelAndView"
+                        }
+                    },
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "options": {
+                "tags": [
+                    "basic-error-controller"
+                ],
+                "summary": "errorHtml",
+                "operationId": "errorHtmlUsingOPTIONS",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "text/html"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ModelAndView"
+                        }
+                    },
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "basic-error-controller"
+                ],
+                "summary": "errorHtml",
+                "operationId": "errorHtmlUsingPATCH",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "text/html"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ModelAndView"
+                        }
+                    },
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/idcard/rest/idcard/createIdcard": {
+            "post": {
+                "tags": [
+                    "IDCardSystemRest",
+                    "createIdcard"
+                ],
+                "summary": "To create Student IDCard ",
+                "operationId": "createIdcardUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "idCardWrapper",
+                        "description": "to pass idcard wrapper",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/IDCardWrapper"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object"
+                        }
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "x-auth-type": "None"
+            }
+        },
+        "/idcard/rest/idcard/getBufferdListOfIdcard": {
+            "get": {
+                "tags": [
+                    "IDCardSystemRest",
+                    "getBufferdListOfIdcard"
+                ],
+                "summary": "To get List of Student IDCard by session, serialno and college",
+                "operationId": "getBufferdListOfIdcardUsingGET",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "college",
+                        "in": "query",
+                        "description": "to pass student college Name",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "degree",
+                        "in": "query",
+                        "description": "to pass student degree Name",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "listOfSerialno",
+                        "description": "to pass list of student serial number",
+                        "required": false,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    {
+                        "name": "session",
+                        "in": "query",
+                        "description": "to pass college session",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "university",
+                        "in": "query",
+                        "description": "to pass student university Name",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "$ref": "#/definitions/BufferedImage"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "x-auth-type": "None"
+            }
+        },
+        "/idcard/rest/idcard/getIdcard": {
+            "get": {
+                "tags": [
+                    "IDCardSystemRest",
+                    "getIdcard"
+                ],
+                "summary": "To get Student IDCard ",
+                "operationId": "getIdcardUsingGET",
+                "produces": [
+                    "application/octet-stream"
+                ],
+                "parameters": [
+                    {
+                        "name": "college",
+                        "in": "query",
+                        "description": "to pass student college Name",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "degree",
+                        "in": "query",
+                        "description": "to pass student degree Name",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "serialNo",
+                        "in": "query",
+                        "description": "to pass student serial number",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "session",
+                        "in": "query",
+                        "description": "to pass college session",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "university",
+                        "in": "query",
+                        "description": "to pass student university Name",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string",
+                            "format": "byte"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "x-auth-type": "None"
+            }
+        },
+        "/idcard/rest/idcard/getListOfIdcard": {
+            "get": {
+                "tags": [
+                    "IDCardSystemRest",
+                    "getListOfIdcard"
+                ],
+                "summary": "To get List of Student IDCard by session, serialno and college",
+                "operationId": "getListOfIdcardUsingGET",
+                "produces": [
+                    "application/octet-stream"
+                ],
+                "parameters": [
+                    {
+                        "name": "college",
+                        "in": "query",
+                        "description": "to pass student college Name",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "degree",
+                        "in": "query",
+                        "description": "to pass student degree Name",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "listOfSerialno",
+                        "description": "to pass list of student serial number",
+                        "required": false,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    {
+                        "name": "session",
+                        "in": "query",
+                        "description": "to pass college session",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "university",
+                        "in": "query",
+                        "description": "to pass student university Name",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "string",
+                                "format": "byte"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "x-auth-type": "None"
+            }
+        },
+        "/idcard/rest/idcard/home": {
+            "get": {
+                "tags": [
+                    "IDCardSystemRest"
+                ],
+                "summary": "home",
+                "operationId": "homeUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "AffineTransform": {
+            "type": "object",
+            "properties": {
+                "determinant": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "identity": {
+                    "type": "boolean"
+                },
+                "scaleX": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "scaleY": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "shearX": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "shearY": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "translateX": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "translateY": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "type": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "title": "AffineTransform"
+        },
+        "Attribute": {
+            "type": "object",
+            "title": "Attribute"
+        },
+        "BYTE_ARRAY": {
+            "type": "object",
+            "properties": {
+                "mediaSubtype": {
+                    "type": "string"
+                },
+                "mediaType": {
+                    "type": "string"
+                },
+                "mimeType": {
+                    "type": "string"
+                },
+                "representationClassName": {
+                    "type": "string"
+                }
+            },
+            "title": "BYTE_ARRAY"
+        },
+        "BufferedImage": {
+            "type": "object",
+            "properties": {
+                "accelerationPriority": {
+                    "type": "number",
+                    "format": "float"
+                },
+                "alphaPremultiplied": {
+                    "type": "boolean"
+                },
+                "alphaRaster": {
+                    "$ref": "#/definitions/WritableRaster"
+                },
+                "colorModel": {
+                    "$ref": "#/definitions/ColorModel"
+                },
+                "data": {
+                    "$ref": "#/definitions/Raster"
+                },
+                "graphics": {
+                    "$ref": "#/definitions/Graphics"
+                },
+                "height": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "minTileX": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "minTileY": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "minX": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "minY": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "numXTiles": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "numYTiles": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "propertyNames": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "raster": {
+                    "$ref": "#/definitions/WritableRaster"
+                },
+                "sampleModel": {
+                    "$ref": "#/definitions/SampleModel"
+                },
+                "source": {
+                    "$ref": "#/definitions/ImageProducer"
+                },
+                "sources": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/RenderedImage"
+                    }
+                },
+                "tileGridXOffset": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "tileGridYOffset": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "tileHeight": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "tileWidth": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "transparency": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "type": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "width": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "writableTileIndices": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Point"
+                    }
+                }
+            },
+            "title": "BufferedImage"
+        },
+        "Color": {
+            "type": "object",
+            "properties": {
+                "alpha": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "blue": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "colorSpace": {
+                    "$ref": "#/definitions/ColorSpace"
+                },
+                "green": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "red": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "rgb": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "transparency": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "title": "Color"
+        },
+        "ColorModel": {
+            "type": "object",
+            "properties": {
+                "alphaPremultiplied": {
+                    "type": "boolean"
+                },
+                "colorSpace": {
+                    "$ref": "#/definitions/ColorSpace"
+                },
+                "componentSize": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                },
+                "numColorComponents": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "numComponents": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "pixelSize": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "transferType": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "transparency": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "title": "ColorModel"
+        },
+        "ColorSpace": {
+            "type": "object",
+            "properties": {
+                "cs_sRGB": {
+                    "type": "boolean"
+                },
+                "numComponents": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "type": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "title": "ColorSpace"
+        },
+        "DataBuffer": {
+            "type": "object",
+            "properties": {
+                "dataType": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "numBanks": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "offset": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "offsets": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                },
+                "size": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "title": "DataBuffer"
+        },
+        "Dimension": {
+            "type": "object",
+            "properties": {
+                "height": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "width": {
+                    "type": "number",
+                    "format": "double"
+                }
+            },
+            "title": "Dimension"
+        },
+        "Font": {
+            "type": "object",
+            "properties": {
+                "attributes": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "object"
+                    }
+                },
+                "availableAttributes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Attribute"
+                    }
+                },
+                "bold": {
+                    "type": "boolean"
+                },
+                "family": {
+                    "type": "string"
+                },
+                "fontName": {
+                    "type": "string"
+                },
+                "italic": {
+                    "type": "boolean"
+                },
+                "italicAngle": {
+                    "type": "number",
+                    "format": "float"
+                },
+                "missingGlyphCode": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "numGlyphs": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "plain": {
+                    "type": "boolean"
+                },
+                "psname": {
+                    "type": "string"
+                },
+                "size": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "size2D": {
+                    "type": "number",
+                    "format": "float"
+                },
+                "style": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "transform": {
+                    "$ref": "#/definitions/AffineTransform"
+                },
+                "transformed": {
+                    "type": "boolean"
+                }
+            },
+            "title": "Font"
+        },
+        "FontMetrics": {
+            "type": "object",
+            "properties": {
+                "ascent": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "descent": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "font": {
+                    "$ref": "#/definitions/Font"
+                },
+                "fontRenderContext": {
+                    "$ref": "#/definitions/FontRenderContext"
+                },
+                "height": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "leading": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "maxAdvance": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "maxAscent": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "maxDecent": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "maxDescent": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "widths": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                }
+            },
+            "title": "FontMetrics"
+        },
+        "FontRenderContext": {
+            "type": "object",
+            "properties": {
+                "antiAliased": {
+                    "type": "boolean"
+                },
+                "antiAliasingHint": {
+                    "type": "object"
+                },
+                "fractionalMetricsHint": {
+                    "type": "object"
+                },
+                "transform": {
+                    "$ref": "#/definitions/AffineTransform"
+                },
+                "transformType": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "transformed": {
+                    "type": "boolean"
+                }
+            },
+            "title": "FontRenderContext"
+        },
+        "Graphics": {
+            "type": "object",
+            "properties": {
+                "clip": {
+                    "$ref": "#/definitions/Shape"
+                },
+                "clipBounds": {
+                    "$ref": "#/definitions/Rectangle"
+                },
+                "clipRect": {
+                    "$ref": "#/definitions/Rectangle"
+                },
+                "color": {
+                    "$ref": "#/definitions/Color"
+                },
+                "font": {
+                    "$ref": "#/definitions/Font"
+                },
+                "fontMetrics": {
+                    "$ref": "#/definitions/FontMetrics"
+                }
+            },
+            "title": "Graphics"
+        },
+        "IDCardWrapper": {
+            "type": "object",
+            "properties": {
+                "address": {
+                    "type": "string"
+                },
+                "collegeName": {
+                    "type": "string"
+                },
+                "degree": {
+                    "type": "string"
+                },
+                "dob": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "fatherName": {
+                    "type": "string"
+                },
+                "gender": {
+                    "type": "string"
+                },
+                "image": {
+                    "type": "string",
+                    "format": "byte"
+                },
+                "mobile": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "photo": {
+                    "type": "string",
+                    "format": "byte"
+                },
+                "serialNumber": {
+                    "type": "string"
+                },
+                "session": {
+                    "type": "string"
+                },
+                "universityName": {
+                    "type": "string"
+                }
+            },
+            "title": "IDCardWrapper"
+        },
+        "ImageProducer": {
+            "type": "object",
+            "title": "ImageProducer"
+        },
+        "ModelAndView": {
+            "type": "object",
+            "properties": {
+                "empty": {
+                    "type": "boolean"
+                },
+                "model": {
+                    "type": "object"
+                },
+                "modelMap": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "object"
+                    }
+                },
+                "reference": {
+                    "type": "boolean"
+                },
+                "status": {
+                    "type": "string",
+                    "enum": [
+                        "ACCEPTED",
+                        "ALREADY_REPORTED",
+                        "BAD_GATEWAY",
+                        "BAD_REQUEST",
+                        "BANDWIDTH_LIMIT_EXCEEDED",
+                        "CHECKPOINT",
+                        "CONFLICT",
+                        "CONTINUE",
+                        "CREATED",
+                        "DESTINATION_LOCKED",
+                        "EXPECTATION_FAILED",
+                        "FAILED_DEPENDENCY",
+                        "FORBIDDEN",
+                        "FOUND",
+                        "GATEWAY_TIMEOUT",
+                        "GONE",
+                        "HTTP_VERSION_NOT_SUPPORTED",
+                        "IM_USED",
+                        "INSUFFICIENT_SPACE_ON_RESOURCE",
+                        "INSUFFICIENT_STORAGE",
+                        "INTERNAL_SERVER_ERROR",
+                        "I_AM_A_TEAPOT",
+                        "LENGTH_REQUIRED",
+                        "LOCKED",
+                        "LOOP_DETECTED",
+                        "METHOD_FAILURE",
+                        "METHOD_NOT_ALLOWED",
+                        "MOVED_PERMANENTLY",
+                        "MOVED_TEMPORARILY",
+                        "MULTIPLE_CHOICES",
+                        "MULTI_STATUS",
+                        "NETWORK_AUTHENTICATION_REQUIRED",
+                        "NON_AUTHORITATIVE_INFORMATION",
+                        "NOT_ACCEPTABLE",
+                        "NOT_EXTENDED",
+                        "NOT_FOUND",
+                        "NOT_IMPLEMENTED",
+                        "NOT_MODIFIED",
+                        "NO_CONTENT",
+                        "OK",
+                        "PARTIAL_CONTENT",
+                        "PAYLOAD_TOO_LARGE",
+                        "PAYMENT_REQUIRED",
+                        "PERMANENT_REDIRECT",
+                        "PRECONDITION_FAILED",
+                        "PRECONDITION_REQUIRED",
+                        "PROCESSING",
+                        "PROXY_AUTHENTICATION_REQUIRED",
+                        "REQUESTED_RANGE_NOT_SATISFIABLE",
+                        "REQUEST_ENTITY_TOO_LARGE",
+                        "REQUEST_HEADER_FIELDS_TOO_LARGE",
+                        "REQUEST_TIMEOUT",
+                        "REQUEST_URI_TOO_LONG",
+                        "RESET_CONTENT",
+                        "SEE_OTHER",
+                        "SERVICE_UNAVAILABLE",
+                        "SWITCHING_PROTOCOLS",
+                        "TEMPORARY_REDIRECT",
+                        "TOO_EARLY",
+                        "TOO_MANY_REQUESTS",
+                        "UNAUTHORIZED",
+                        "UNAVAILABLE_FOR_LEGAL_REASONS",
+                        "UNPROCESSABLE_ENTITY",
+                        "UNSUPPORTED_MEDIA_TYPE",
+                        "UPGRADE_REQUIRED",
+                        "URI_TOO_LONG",
+                        "USE_PROXY",
+                        "VARIANT_ALSO_NEGOTIATES"
+                    ]
+                },
+                "view": {
+                    "$ref": "#/definitions/View"
+                },
+                "viewName": {
+                    "type": "string"
+                }
+            },
+            "title": "ModelAndView"
+        },
+        "Point": {
+            "type": "object",
+            "properties": {
+                "x": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "y": {
+                    "type": "number",
+                    "format": "double"
+                }
+            },
+            "title": "Point"
+        },
+        "Raster": {
+            "type": "object",
+            "properties": {
+                "bounds": {
+                    "$ref": "#/definitions/Rectangle"
+                },
+                "dataBuffer": {
+                    "$ref": "#/definitions/DataBuffer"
+                },
+                "height": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "minX": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "minY": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "numBands": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "numDataElements": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "parent": {
+                    "$ref": "#/definitions/Raster"
+                },
+                "sampleModel": {
+                    "$ref": "#/definitions/SampleModel"
+                },
+                "sampleModelTranslateX": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "sampleModelTranslateY": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "transferType": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "width": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "title": "Raster"
+        },
+        "Rectangle": {
+            "type": "object",
+            "properties": {
+                "bounds2D": {
+                    "$ref": "#/definitions/Rectangle2D"
+                },
+                "centerX": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "centerY": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "empty": {
+                    "type": "boolean"
+                },
+                "height": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "location": {
+                    "$ref": "#/definitions/Point"
+                },
+                "maxX": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "maxY": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "minX": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "minY": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "size": {
+                    "$ref": "#/definitions/Dimension"
+                },
+                "width": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "x": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "y": {
+                    "type": "number",
+                    "format": "double"
+                }
+            },
+            "title": "Rectangle"
+        },
+        "Rectangle2D": {
+            "type": "object",
+            "properties": {
+                "bounds": {
+                    "$ref": "#/definitions/Rectangle"
+                },
+                "bounds2D": {
+                    "$ref": "#/definitions/Rectangle2D"
+                },
+                "centerX": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "centerY": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "empty": {
+                    "type": "boolean"
+                },
+                "height": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "maxX": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "maxY": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "minX": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "minY": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "width": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "x": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "y": {
+                    "type": "number",
+                    "format": "double"
+                }
+            },
+            "title": "Rectangle2D"
+        },
+        "RenderedImage": {
+            "type": "object",
+            "properties": {
+                "colorModel": {
+                    "$ref": "#/definitions/ColorModel"
+                },
+                "data": {
+                    "$ref": "#/definitions/Raster"
+                },
+                "height": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "minTileX": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "minTileY": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "minX": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "minY": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "numXTiles": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "numYTiles": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "propertyNames": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "sampleModel": {
+                    "$ref": "#/definitions/SampleModel"
+                },
+                "sources": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/RenderedImage"
+                    }
+                },
+                "tileGridXOffset": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "tileGridYOffset": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "tileHeight": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "tileWidth": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "width": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "title": "RenderedImage"
+        },
+        "SampleModel": {
+            "type": "object",
+            "properties": {
+                "dataType": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "height": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "numBands": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "numDataElements": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "sampleSize": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                },
+                "transferType": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "width": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "title": "SampleModel"
+        },
+        "Shape": {
+            "type": "object",
+            "properties": {
+                "bounds": {
+                    "$ref": "#/definitions/Rectangle"
+                },
+                "bounds2D": {
+                    "$ref": "#/definitions/Rectangle2D"
+                }
+            },
+            "title": "Shape"
+        },
+        "View": {
+            "type": "object",
+            "properties": {
+                "contentType": {
+                    "type": "string"
+                }
+            },
+            "title": "View"
+        },
+        "WritableRaster": {
+            "type": "object",
+            "properties": {
+                "bounds": {
+                    "$ref": "#/definitions/Rectangle"
+                },
+                "dataBuffer": {
+                    "$ref": "#/definitions/DataBuffer"
+                },
+                "height": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "minX": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "minY": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "numBands": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "numDataElements": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "parent": {
+                    "$ref": "#/definitions/Raster"
+                },
+                "sampleModel": {
+                    "$ref": "#/definitions/SampleModel"
+                },
+                "sampleModelTranslateX": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "sampleModelTranslateY": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "transferType": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "width": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "writableParent": {
+                    "$ref": "#/definitions/WritableRaster"
+                }
+            },
+            "title": "WritableRaster"
+        }
+    }
+}
