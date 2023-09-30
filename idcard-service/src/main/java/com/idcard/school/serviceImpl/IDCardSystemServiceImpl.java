@@ -23,6 +23,7 @@ import org.springframework.stereotype.Service;
 
 import com.idcard.school.dao.IDCardSystemDao;
 import com.idcard.school.model.IDCardWrapper;
+import com.idcard.school.model.ResponseWrapper;
 import com.idcard.school.service.IDCardSystemService;
 
 @Service
@@ -31,13 +32,12 @@ public class IDCardSystemServiceImpl implements IDCardSystemService {
 	private static Logger logger = LogManager.getLogger(IDCardSystemServiceImpl.class);
 	
 	private static final byte [] Empty_Byte=null;
-	private static final IDCardWrapper Empty_IDCard_Data=null;
 
 	@Autowired
 	private IDCardSystemDao idDao;
 
 	@Override
-	public IDCardWrapper createIdcard(IDCardWrapper idCardWrapper) {
+	public ResponseWrapper createIdcard(IDCardWrapper idCardWrapper) {
 		logger.info("Insider the createIdcard method with entity value : {} ", idCardWrapper.toStringSize());
 
 		try {
@@ -153,13 +153,26 @@ public class IDCardSystemServiceImpl implements IDCardSystemService {
 			document.close();
 			logger.info("final idcard image : {} ", idCardWrapper.getImage().length);
 			if (idDao.insertCQL(idCardWrapper)) {
-				return idCardWrapper;
+				ResponseWrapper responseWrapper=new ResponseWrapper();
+				responseWrapper.setSerialNumber(idCardWrapper.getSerialNumber());
+				responseWrapper.setName(idCardWrapper.getName());
+				responseWrapper.setAddress(idCardWrapper.getAddress());
+				responseWrapper.setCollegeName(idCardWrapper.getCollegeName());
+				responseWrapper.setDegree(idCardWrapper.getDegree());
+				responseWrapper.setDob(idCardWrapper.getDob());
+				responseWrapper.setEmail(idCardWrapper.getEmail());
+				responseWrapper.setFatherName(idCardWrapper.getFatherName());
+				responseWrapper.setGender(idCardWrapper.getGender());
+				responseWrapper.setMobile(idCardWrapper.getMobile());
+				responseWrapper.setSession(idCardWrapper.getSession());
+				responseWrapper.setUniversityName(idCardWrapper.getUniversityName());
+				return responseWrapper;
 			}
 		} catch (Exception e) {
 			logger.info("error found in createidcard : {}", e.getMessage());
 		}
 
-		return Empty_IDCard_Data;
+		return new ResponseWrapper();
 	}
 
 	@Override

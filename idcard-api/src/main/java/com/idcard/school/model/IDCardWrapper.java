@@ -19,16 +19,37 @@ public class IDCardWrapper {
 	private byte[] photo;
 	private byte[] image;
 
+
+	
+
+	public IDCardWrapper() {
+		super();
+	}
+
+	public IDCardWrapper(String serialNumber, String name, String fatherName, String gender, String dob,
+			String universityName, String collegeName, String degree, String session, String address, String mobile,
+			String email, byte[] photo) {
+		this.serialNumber = serialNumber;
+		this.name = name;
+		this.fatherName = fatherName;
+		this.gender = gender;
+		this.dob = dob;
+		this.universityName = universityName;
+		this.collegeName = collegeName;
+		this.degree = degree;
+		this.session = session;
+		this.address = address;
+		this.mobile = mobile;
+		this.email = email;
+		this.photo = photo;
+	}
+
 	public byte[] getPhoto() {
 		return photo;
 	}
 
 	public void setPhoto(byte[] photo) {
 		this.photo = photo;
-	}
-
-	public IDCardWrapper() {
-		super();
 	}
 
 	public String getSerialNumber() {

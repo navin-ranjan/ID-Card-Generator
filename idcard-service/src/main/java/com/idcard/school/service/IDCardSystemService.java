@@ -5,10 +5,11 @@ import java.util.List;
 import java.util.Map;
 
 import com.idcard.school.model.IDCardWrapper;
+import com.idcard.school.model.ResponseWrapper;
 
 public interface IDCardSystemService {
 	
-	public IDCardWrapper createIdcard(IDCardWrapper idCardWrapper);
+	public ResponseWrapper createIdcard(IDCardWrapper idCardWrapper);
 	
 	public byte [] getIdcard(String serialNo, String session, String university, String college, String degree);
 	
